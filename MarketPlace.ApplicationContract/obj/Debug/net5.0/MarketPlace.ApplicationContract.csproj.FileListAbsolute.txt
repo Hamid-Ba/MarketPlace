@@ -1,0 +1,12 @@
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.ApplicationContract\bin\Debug\net5.0\MarketPlace.ApplicationContract.deps.json
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.ApplicationContract\bin\Debug\net5.0\MarketPlace.ApplicationContract.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.ApplicationContract\bin\Debug\net5.0\ref\MarketPlace.ApplicationContract.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.ApplicationContract\bin\Debug\net5.0\MarketPlace.ApplicationContract.pdb
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.ApplicationContract\obj\Debug\net5.0\MarketPlace.ApplicationContract.csprojAssemblyReference.cache
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.ApplicationContract\obj\Debug\net5.0\MarketPlace.ApplicationContract.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.ApplicationContract\obj\Debug\net5.0\MarketPlace.ApplicationContract.AssemblyInfoInputs.cache
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.ApplicationContract\obj\Debug\net5.0\MarketPlace.ApplicationContract.AssemblyInfo.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.ApplicationContract\obj\Debug\net5.0\MarketPlace.ApplicationContract.csproj.CoreCompileInputs.cache
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.ApplicationContract\obj\Debug\net5.0\MarketPlace.ApplicationContract.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.ApplicationContract\obj\Debug\net5.0\ref\MarketPlace.ApplicationContract.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.ApplicationContract\obj\Debug\net5.0\MarketPlace.ApplicationContract.pdb

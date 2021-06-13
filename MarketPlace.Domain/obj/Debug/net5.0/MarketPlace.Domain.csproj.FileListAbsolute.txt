@@ -1,0 +1,15 @@
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Domain\bin\Debug\net5.0\MarketPlace.Domain.deps.json
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Domain\bin\Debug\net5.0\MarketPlace.Domain.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Domain\bin\Debug\net5.0\ref\MarketPlace.Domain.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Domain\bin\Debug\net5.0\MarketPlace.Domain.pdb
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Domain\bin\Debug\net5.0\Framework.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Domain\bin\Debug\net5.0\Framework.pdb
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Domain\obj\Debug\net5.0\MarketPlace.Domain.csprojAssemblyReference.cache
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Domain\obj\Debug\net5.0\MarketPlace.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Domain\obj\Debug\net5.0\MarketPlace.Domain.AssemblyInfoInputs.cache
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Domain\obj\Debug\net5.0\MarketPlace.Domain.AssemblyInfo.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Domain\obj\Debug\net5.0\MarketPlace.Domain.csproj.CoreCompileInputs.cache
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Domain\obj\Debug\net5.0\MarketPlace.Domain.csproj.CopyComplete
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Domain\obj\Debug\net5.0\MarketPlace.Domain.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Domain\obj\Debug\net5.0\ref\MarketPlace.Domain.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Domain\obj\Debug\net5.0\MarketPlace.Domain.pdb

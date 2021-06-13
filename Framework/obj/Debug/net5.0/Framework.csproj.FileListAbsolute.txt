@@ -1,0 +1,12 @@
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\Framework\bin\Debug\net5.0\Framework.deps.json
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\Framework\bin\Debug\net5.0\Framework.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\Framework\bin\Debug\net5.0\ref\Framework.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\Framework\bin\Debug\net5.0\Framework.pdb
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\Framework\obj\Debug\net5.0\Framework.csprojAssemblyReference.cache
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\Framework\obj\Debug\net5.0\Framework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\Framework\obj\Debug\net5.0\Framework.AssemblyInfoInputs.cache
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\Framework\obj\Debug\net5.0\Framework.AssemblyInfo.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\Framework\obj\Debug\net5.0\Framework.csproj.CoreCompileInputs.cache
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\Framework\obj\Debug\net5.0\Framework.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\Framework\obj\Debug\net5.0\ref\Framework.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\Framework\obj\Debug\net5.0\Framework.pdb

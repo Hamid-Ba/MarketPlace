@@ -1,0 +1,12 @@
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Application\bin\Debug\net5.0\MarketPlace.Application.deps.json
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Application\bin\Debug\net5.0\MarketPlace.Application.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Application\bin\Debug\net5.0\ref\MarketPlace.Application.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Application\bin\Debug\net5.0\MarketPlace.Application.pdb
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Application\obj\Debug\net5.0\MarketPlace.Application.csprojAssemblyReference.cache
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Application\obj\Debug\net5.0\MarketPlace.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Application\obj\Debug\net5.0\MarketPlace.Application.AssemblyInfoInputs.cache
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Application\obj\Debug\net5.0\MarketPlace.Application.AssemblyInfo.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Application\obj\Debug\net5.0\MarketPlace.Application.csproj.CoreCompileInputs.cache
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Application\obj\Debug\net5.0\MarketPlace.Application.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Application\obj\Debug\net5.0\ref\MarketPlace.Application.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Application\obj\Debug\net5.0\MarketPlace.Application.pdb
