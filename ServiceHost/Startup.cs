@@ -1,13 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
+using Framework.Application.Hashing;
 using MarketPlace.Infrastructure.Configuration;
 
 namespace ServiceHost
@@ -25,7 +23,15 @@ namespace ServiceHost
         public void ConfigureServices(IServiceCollection services)
         {
             MarketPlaceBootstrapper.Configure(services,Configuration.GetConnectionString("MarketPlaceConnection"));
+
+            services.AddScoped<IPasswordHasher, PasswordHasher>();
             services.AddControllersWithViews();
+
+            #region html encoder
+
+            services.AddSingleton<HtmlEncoder>(HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.BasicLatin, UnicodeRanges.Arabic }));
+
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

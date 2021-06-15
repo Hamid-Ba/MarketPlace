@@ -7,7 +7,7 @@
     <title>Market Place | @ViewData["Title"]</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <partial name="_HeaderReference"/>
+    <partial name="_HeaderReference" />
 
 </head>
 
@@ -16,9 +16,10 @@
     @await Component.InvokeAsync("SiteHeader")
     @RenderBody()
     @await Component.InvokeAsync("SiteFooter")
-    
-    <partial name="_FooterReference"/>
-    <partial name="_ValidationScriptsPartial"/>
+
+    <partial name="_FooterReference" />
+    <partial name="_ValidationScriptsPartial" />
+    <partial name="_SiteMessage" />
 
 
 </body>

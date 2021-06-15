@@ -9,6 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MarketPlace.ApplicationContract\MarketPlace.ApplicationContract.csproj" />
+    <ProjectReference Include="..\MarketPlace.Application\MarketPlace.Application.csproj" />
     <ProjectReference Include="..\MarketPlace.Infrastructure.EfCore\MarketPlace.Infrastructure.EfCore.csproj" />
   </ItemGroup>
 

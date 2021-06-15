@@ -36,12 +36,10 @@ namespace MarketPlace.Infrastructure.EfCore.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("EmailActivateCode")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -76,7 +74,6 @@ namespace MarketPlace.Infrastructure.EfCore.Migrations
                         .HasColumnType("nvarchar(11)");
 
                     b.Property<string>("MobileActivateCode")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 

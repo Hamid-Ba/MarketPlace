@@ -17,3 +17,7 @@ C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\M
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Infrastructure.Configuration\obj\Debug\net5.0\MarketPlace.Infrastructure.Configuration.dll
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Infrastructure.Configuration\obj\Debug\net5.0\ref\MarketPlace.Infrastructure.Configuration.dll
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Infrastructure.Configuration\obj\Debug\net5.0\MarketPlace.Infrastructure.Configuration.pdb
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Infrastructure.Configuration\bin\Debug\net5.0\MarketPlace.Application.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Infrastructure.Configuration\bin\Debug\net5.0\MarketPlace.ApplicationContract.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Infrastructure.Configuration\bin\Debug\net5.0\MarketPlace.ApplicationContract.pdb
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Infrastructure.Configuration\bin\Debug\net5.0\MarketPlace.Application.pdb

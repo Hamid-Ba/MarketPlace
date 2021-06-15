@@ -17,7 +17,7 @@ namespace MarketPlace.Domain.Entities.Account
         public bool IsBlocked { get; private set; }
 
         public User(string firstName, string lastName, string email, string emailActivateCode, bool isEmailConfirmed, string mobile,
-            string mobileActivateCode, bool isMobileConfirmed, string password, string avatar, bool isBlocked)
+            string mobileActivateCode, bool isMobileConfirmed, string password, string avatar)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -29,7 +29,7 @@ namespace MarketPlace.Domain.Entities.Account
             IsMobileConfirmed = isMobileConfirmed;
             Password = password;
             Avatar = avatar;
-            IsBlocked = isBlocked;
+            IsBlocked = false;
         }
 
         public void Edit(string firstName, string lastName, string email, string emailActivateCode, bool isEmailConfirmed, string mobile,

@@ -156,3 +156,9 @@ C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\S
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Views\Shared\_FooterReference.cshtml.g.cs
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Views\Shared\_HeaderReference.cshtml.g.cs
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Views\Shared\_MainLayout.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\bin\Debug\net5.0\MarketPlace.ApplicationContract.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\bin\Debug\net5.0\MarketPlace.ApplicationContract.pdb
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\bin\Debug\net5.0\MarketPlace.Application.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\bin\Debug\net5.0\MarketPlace.Application.pdb
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Views\Shared\_SiteMessage.cshtml.g.cs
