@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -5,8 +6,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
+using Framework.Application.Authentication;
 using Framework.Application.Hashing;
 using MarketPlace.Infrastructure.Configuration;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 
 namespace ServiceHost
 {
@@ -24,8 +28,23 @@ namespace ServiceHost
         {
             MarketPlaceBootstrapper.Configure(services,Configuration.GetConnectionString("MarketPlaceConnection"));
 
+            services.AddHttpContextAccessor();
+            services.AddScoped<IAuthHelper, AuthHelper>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
             services.AddControllersWithViews();
+
+            #region Config Authentication
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, o =>
+                {
+                    o.LoginPath = "/";
+                    o.LogoutPath = "/Logout";
+                    o.AccessDeniedPath = new PathString("/AccessDenied");
+                    o.ExpireTimeSpan = TimeSpan.FromMinutes(43200);
+                });
+
+            #endregion
 
             #region html encoder
 
@@ -52,6 +71,7 @@ namespace ServiceHost
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

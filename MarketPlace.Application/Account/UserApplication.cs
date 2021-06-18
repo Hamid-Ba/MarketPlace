@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Framework.Application;
+using Framework.Application.Authentication;
 using Framework.Application.Hashing;
 using MarketPlace.ApplicationContract.AI.Account;
 using MarketPlace.ApplicationContract.ViewModels.Account;
@@ -14,11 +12,13 @@ namespace MarketPlace.Application.Account
 {
     public class UserApplication : IUserApplication
     {
+        private readonly IAuthHelper _authHelper;
         private readonly IUserRepository _userRepository;
         private readonly IPasswordHasher _passwordHasher;
 
-        public UserApplication(IUserRepository userRepository, IPasswordHasher passwordHasher)
+        public UserApplication(IAuthHelper authHelper, IUserRepository userRepository, IPasswordHasher passwordHasher)
         {
+            _authHelper = authHelper;
             _userRepository = userRepository;
             _passwordHasher = passwordHasher;
         }
@@ -40,7 +40,26 @@ namespace MarketPlace.Application.Account
             await _userRepository.AddEntityAsync(user);
             await _userRepository.SaveChangesAsync();
 
-            return result.Succeeded("ثبت نام شما با موفقیت انجام شد ، جهت تکمیل ثبت نام کد فعال سازی برای شما ارسال شد");
+            return result.Succeeded("ثبت نام شما با موفقیت انجام شد ");
+        }
+
+        public async Task<OperationResult> Login(LoginUserVM command)
+        {
+            var result = new OperationResult();
+
+            var user = await _userRepository.GetUserBy(command.Mobile);
+
+            if (user is null) return result.Failed("کاربری با این مشخصات یافت نشد");
+
+            var passwordResult = _passwordHasher.Check(user.Password, command.Password);
+            if (!passwordResult.Verified) return result.Failed("رمز عبور شما اشتباه است!");
+
+            if (!user.IsMobileConfirmed) return result.Failed("حساب کاربری شما غیر فعال می باشد");
+
+            var authHelperVM = new AuthViewModel(user.Id, $"{user.FirstName} {user.LastName}", user.Mobile, command.IsKeep);
+            _authHelper.Signin(authHelperVM);
+
+            return result.Succeeded();
         }
     }
 }
