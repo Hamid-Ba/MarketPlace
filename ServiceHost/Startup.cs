@@ -8,6 +8,8 @@ using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using Framework.Application.Authentication;
 using Framework.Application.Hashing;
+using GoogleReCaptcha.V3;
+using GoogleReCaptcha.V3.Interface;
 using MarketPlace.Infrastructure.Configuration;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
@@ -29,9 +31,11 @@ namespace ServiceHost
             MarketPlaceBootstrapper.Configure(services,Configuration.GetConnectionString("MarketPlaceConnection"));
 
             services.AddHttpContextAccessor();
+            services.AddControllersWithViews();
             services.AddScoped<IAuthHelper, AuthHelper>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
-            services.AddControllersWithViews();
+            services.AddHttpClient<ICaptchaValidator, GoogleReCaptchaValidator>();
+            
 
             #region Config Authentication
 

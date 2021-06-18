@@ -59,7 +59,22 @@ namespace MarketPlace.Application.Account
             var authHelperVM = new AuthViewModel(user.Id, $"{user.FirstName} {user.LastName}", user.Mobile, command.IsKeep);
             _authHelper.Signin(authHelperVM);
 
-            return result.Succeeded();
+            return result.Succeeded("با موفقیت وارد شدید");
+        }
+
+        public OperationResult Logout()
+        {
+            var result = new OperationResult();
+
+            try
+            {
+                _authHelper.SignOut();
+                return result.Succeeded("با موفقیت خارج شدید");
+            }
+            catch 
+            {
+                return result.Failed("خروج با مشکل مواجه شد");
+            }
         }
     }
 }

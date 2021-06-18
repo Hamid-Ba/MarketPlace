@@ -8,5 +8,6 @@ namespace MarketPlace.ApplicationContract.AI.Account
     {
         Task<OperationResult> Register(RegisterUserVM command);
         Task<OperationResult> Login(LoginUserVM command);
+        OperationResult Logout();
     }
 }

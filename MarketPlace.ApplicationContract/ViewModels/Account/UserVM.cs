@@ -3,7 +3,7 @@ using Framework.Application;
 
 namespace MarketPlace.ApplicationContract.ViewModels.Account
 {
-    public class RegisterUserVM
+    public class RegisterUserVM : CaptchaViewModel
     {
         [Display(Name = "نام")]
         [Required(ErrorMessage = ValidationMessage.IsRequired)]
@@ -38,7 +38,7 @@ namespace MarketPlace.ApplicationContract.ViewModels.Account
         public string ConfirmedPassword { get;  set; }
     }
 
-    public class LoginUserVM
+    public class LoginUserVM : CaptchaViewModel
     {
         [Display(Name = "شماره موبایل")]
         [Required(ErrorMessage = ValidationMessage.IsRequired)]

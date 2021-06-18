@@ -3,6 +3,11 @@
     ViewData["Title"] = "ورود";
 }
 
+@section Scripts
+ {
+     <partial name="_CaptchaScripts" />
+ }
+
 <div class="breadcrumbs_area">
     <div class="container">
         <div class="row">
@@ -26,6 +31,7 @@
                 <div class="account_form register">
                     <h2>ورود</h2>
                     <form asp-controller="Account" asp-action="Login" method="post">
+                        <partial name="_CaptchaInput"/>
                         <p>
                             <label asp-for="Mobile">شماره موبایل<span>*</span></label>
                             <input asp-for="Mobile">

@@ -12,7 +12,7 @@ namespace ServiceHost.Controllers
         public AccountController(IUserApplication userApplication) => _userApplication = userApplication;
 
         [HttpGet]
-        public IActionResult Register() => View();
+        public IActionResult Register() => User.Identity != null && User.Identity.IsAuthenticated ? RedirectToAction("Index","Home") : View();
 
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterUserVM command)
@@ -34,7 +34,7 @@ namespace ServiceHost.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login() => View();
+        public IActionResult Login() => User.Identity != null && User.Identity.IsAuthenticated ? RedirectToAction("Index", "Home") : View();
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginUserVM command)
@@ -53,6 +53,20 @@ namespace ServiceHost.Controllers
             }
 
             return View(command);
+        }
+
+        public IActionResult Logout()
+        {
+            var result = _userApplication.Logout();
+
+            if (result.IsSucceeded)
+            {
+                TempData[SuccessMessage] = result.Message;
+                return RedirectToAction("Login", "Account");
+            }
+
+            TempData[ErrorMessage] = result.Message;
+            return RedirectToAction("Index", "Home");
         }
     }
 }
