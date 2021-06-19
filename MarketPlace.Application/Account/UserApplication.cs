@@ -49,7 +49,7 @@ namespace MarketPlace.Application.Account
 
             var user = await _userRepository.GetUserBy(command.Mobile);
 
-            if (user is null) return result.Failed("کاربری با این مشخصات یافت نشد");
+            if (user is null) return result.Failed(ApplicationMessage.UserNotExist);
 
             var passwordResult = _passwordHasher.Check(user.Password, command.Password);
             if (!passwordResult.Verified) return result.Failed("رمز عبور شما اشتباه است!");
@@ -60,6 +60,47 @@ namespace MarketPlace.Application.Account
             _authHelper.Signin(authHelperVM);
 
             return result.Succeeded("با موفقیت وارد شدید");
+        }
+
+        public async Task<OperationResult> ForgotPassword(ForgotPasswordUserVM command)
+        {
+            var result = new OperationResult();
+
+            var user = await _userRepository.GetUserBy(command.Mobile);
+
+            if (user is null) return result.Failed(ApplicationMessage.UserNotExist);
+            
+            user.ReCodeMobileActivateCode(new Random().Next(100000, 999999).ToString());
+            user.LastUpdateDate =DateTime.Now;
+            await _userRepository.SaveChangesAsync();
+
+            //Todo Send Activate Code
+
+            return result.Succeeded("کد فعال سازی برای شما ارسال شد ، جهت ادامه پردازش آن را وارد نمایید");
+        }
+
+        public async Task<OperationResult> RecoverPassword(RecoverPasswordUserVM command)
+        {
+            var result = new OperationResult();
+
+            var user = await _userRepository.GetUserBy(command.Mobile);
+
+            if (user is null) return result.Failed(ApplicationMessage.UserNotExist);
+
+            if (command.MobileActivateCode != user.MobileActivateCode)
+                return result.Failed("کد وارد شده صحیح نمی باشد!");
+
+            var purePassword = Guid.NewGuid().ToString().Substring(0, 6);
+            var newPassword = _passwordHasher.Hash(purePassword);
+            
+            user.ChangePassword(newPassword);
+            user.LastUpdateDate = DateTime.Now;
+
+            //ToDo Send New Password
+
+            await _userRepository.SaveChangesAsync();
+
+            return result.Succeeded("رمز عبور شما با موفقیت تغییر کرد");
         }
 
         public OperationResult Logout()

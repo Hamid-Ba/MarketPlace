@@ -1,4 +1,6 @@
-﻿using Framework.Domain;
+﻿using System;
+using System.Security.Cryptography;
+using Framework.Domain;
 
 namespace MarketPlace.Domain.Entities.Account
 {
@@ -46,9 +48,13 @@ namespace MarketPlace.Domain.Entities.Account
 
             if (!string.IsNullOrEmpty(avatar))
                 Avatar = avatar;
+
+            LastUpdateDate = DateTime.Now;
         }
 
         public void ChangePassword(string newPassword) => Password = newPassword;
+
+        public void ReCodeMobileActivateCode(string newMobileActivateCode) => MobileActivateCode = newMobileActivateCode;
 
         public void BlockUser() => IsBlocked = true;
 

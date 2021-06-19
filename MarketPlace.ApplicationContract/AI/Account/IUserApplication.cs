@@ -8,6 +8,8 @@ namespace MarketPlace.ApplicationContract.AI.Account
     {
         Task<OperationResult> Register(RegisterUserVM command);
         Task<OperationResult> Login(LoginUserVM command);
+        Task<OperationResult> ForgotPassword(ForgotPasswordUserVM command);
+        Task<OperationResult> RecoverPassword(RecoverPasswordUserVM command);
         OperationResult Logout();
     }
 }

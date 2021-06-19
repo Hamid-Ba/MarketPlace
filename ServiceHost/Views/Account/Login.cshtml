@@ -31,7 +31,7 @@
                 <div class="account_form register">
                     <h2>ورود</h2>
                     <form asp-controller="Account" asp-action="Login" method="post">
-                        <partial name="_CaptchaInput"/>
+                        <partial name="_CaptchaInput" />
                         <p>
                             <label asp-for="Mobile">شماره موبایل<span>*</span></label>
                             <input asp-for="Mobile">
@@ -45,6 +45,10 @@
                         <p>
                             <label asp-for="IsKeep">من را به خاطر بسپار</label>
                             <input asp-for="IsKeep" id="keepMe" onclick="keepMe">
+                        </p>
+
+                        <p>
+                            <a asp-controller="Account" asp-action="ForgotPassword" class="text-info">رمز خود را فراموش کردم!</a>
                         </p>
 
                         <div class="login_submit">
