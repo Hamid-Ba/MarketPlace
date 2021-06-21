@@ -54,6 +54,8 @@ namespace MarketPlace.Domain.Entities.Account
 
         public void ChangePassword(string newPassword) => Password = newPassword;
 
+        public void ConfirmMobile() => IsMobileConfirmed = true;
+
         public void ReCodeMobileActivateCode(string newMobileActivateCode) => MobileActivateCode = newMobileActivateCode;
 
         public void BlockUser() => IsBlocked = true;

@@ -10,6 +10,7 @@ namespace MarketPlace.ApplicationContract.AI.Account
         Task<OperationResult> Login(LoginUserVM command);
         Task<OperationResult> ForgotPassword(ForgotPasswordUserVM command);
         Task<OperationResult> RecoverPassword(RecoverPasswordUserVM command);
+        Task<OperationResult> ActiveUserAccount(ActiveMobileUserVM command);
         OperationResult Logout();
     }
 }

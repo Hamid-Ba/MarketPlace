@@ -25,6 +25,18 @@
           "lib/netstandard2.0/Humanizer.dll": {}
         }
       },
+      "Kavenegar/1.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/Kavenegar.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Kavenegar.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Authentication/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -2361,6 +2373,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
+          "Kavenegar": "1.2.4",
           "Microsoft.AspNetCore.Authentication.Cookies": "2.2.0",
           "Microsoft.AspNetCore.Mvc.Abstractions": "2.2.0",
           "Microsoft.EntityFrameworkCore": "5.0.7"
@@ -2472,6 +2485,19 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "Kavenegar/1.2.4": {
+      "sha512": "JyT2+5aCpb8+3rCxcZXY7Nc7rABR4OIeryM3TWkHts6HLOL/7IPhJ2iAnxQswyeDsFObGGb0qqg1nChi+40JvQ==",
+      "type": "package",
+      "path": "kavenegar/1.2.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "kavenegar.1.2.4.nupkg.sha512",
+        "kavenegar.nuspec",
+        "lib/net35/Kavenegar.dll",
+        "lib/netstandard2.0/Kavenegar.dll"
       ]
     },
     "Microsoft.AspNetCore.Authentication/2.2.0": {

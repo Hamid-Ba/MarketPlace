@@ -1,0 +1,51 @@
+﻿@model MarketPlace.ApplicationContract.ViewModels.Account.ActiveMobileUserVM
+@{
+    ViewData["Title"] = "تایید کد";
+}
+
+@section Scripts
+{
+    <partial name="_CaptchaScripts" />
+}
+
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Index">خانه</a></li>
+                        <li>حساب کاربری</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="customer_login mt-60">
+    <div class="container">
+        <div class="row">
+            <!--register area start-->
+            <div class="col-lg-6 col-md-6 offset-lg-3 offset-md-3">
+                <div class="account_form register">
+                    <h2>تایید کد</h2>
+                    <form asp-controller="Account" asp-action="ActiveAccount" method="post">
+                        <partial name="_CaptchaInput"/>
+                        <p>
+                            <label asp-for="MobileActivateCode">کد ارسال شده<span>*</span></label>
+                            <input asp-for="MobileActivateCode">
+                            <span asp-validation-for="MobileActivateCode" class="text-danger"></span>
+                        </p>
+
+                        <div class="login_submit">
+                            <input type="hidden" asp-for="Mobile" value="@ViewBag.Mobile"/>
+                            <button type="submit">تایید کد</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--register area end-->
+        </div>
+    </div>
+</div>

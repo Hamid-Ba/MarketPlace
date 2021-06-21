@@ -8,6 +8,7 @@ using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using Framework.Application.Authentication;
 using Framework.Application.Hashing;
+using Framework.Application.SMS;
 using GoogleReCaptcha.V3;
 using GoogleReCaptcha.V3.Interface;
 using MarketPlace.Infrastructure.Configuration;
@@ -33,6 +34,7 @@ namespace ServiceHost
             services.AddHttpContextAccessor();
             services.AddControllersWithViews();
             services.AddScoped<IAuthHelper, AuthHelper>();
+            services.AddScoped<ISmsService, SmsService>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
             services.AddHttpClient<ICaptchaValidator, GoogleReCaptchaValidator>();
             

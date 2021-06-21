@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Framework.Application;
 using Framework.Application.Authentication;
 using Framework.Application.Hashing;
+using Framework.Application.SMS;
 using MarketPlace.ApplicationContract.AI.Account;
 using MarketPlace.ApplicationContract.ViewModels.Account;
 using MarketPlace.Domain.Entities.Account;
@@ -13,12 +14,14 @@ namespace MarketPlace.Application.Account
     public class UserApplication : IUserApplication
     {
         private readonly IAuthHelper _authHelper;
+        private readonly ISmsService _smsService;
         private readonly IUserRepository _userRepository;
         private readonly IPasswordHasher _passwordHasher;
 
-        public UserApplication(IAuthHelper authHelper, IUserRepository userRepository, IPasswordHasher passwordHasher)
+        public UserApplication(IAuthHelper authHelper, ISmsService smsService, IUserRepository userRepository, IPasswordHasher passwordHasher)
         {
             _authHelper = authHelper;
+            _smsService = smsService;
             _userRepository = userRepository;
             _passwordHasher = passwordHasher;
         }
@@ -39,6 +42,9 @@ namespace MarketPlace.Application.Account
 
             await _userRepository.AddEntityAsync(user);
             await _userRepository.SaveChangesAsync();
+
+            var message = $"{user.FirstName} {user.LastName} عزیز ، کد فعال سازی حساب شما : {user.MobileActivateCode}";
+            _smsService.SendSms(command.Mobile, message);
 
             return result.Succeeded("ثبت نام شما با موفقیت انجام شد ");
         }
@@ -69,12 +75,14 @@ namespace MarketPlace.Application.Account
             var user = await _userRepository.GetUserBy(command.Mobile);
 
             if (user is null) return result.Failed(ApplicationMessage.UserNotExist);
-            
+
             user.ReCodeMobileActivateCode(new Random().Next(100000, 999999).ToString());
-            user.LastUpdateDate =DateTime.Now;
+            user.LastUpdateDate = DateTime.Now;
             await _userRepository.SaveChangesAsync();
 
-            //Todo Send Activate Code
+            var message =
+                $"{user.FirstName} {user.LastName} عزیز ، جهت بازیابی رمز عبور خود کد زیر را وارد نمایید : {user.MobileActivateCode}";
+            _smsService.SendSms(user.Mobile,message);
 
             return result.Succeeded("کد فعال سازی برای شما ارسال شد ، جهت ادامه پردازش آن را وارد نمایید");
         }
@@ -92,15 +100,36 @@ namespace MarketPlace.Application.Account
 
             var purePassword = Guid.NewGuid().ToString().Substring(0, 6);
             var newPassword = _passwordHasher.Hash(purePassword);
-            
+
             user.ChangePassword(newPassword);
             user.LastUpdateDate = DateTime.Now;
 
-            //ToDo Send New Password
+            var message = $"رمز عبور جدید شما : {purePassword} می باشد . لطفا بعد از ورود به حساب خود آن را تغییر دهید";
+            _smsService.SendSms(user.Mobile,message);
 
             await _userRepository.SaveChangesAsync();
 
             return result.Succeeded("رمز عبور شما با موفقیت تغییر کرد");
+        }
+
+        public async Task<OperationResult> ActiveUserAccount(ActiveMobileUserVM command)
+        {
+            var result = new OperationResult();
+
+            var user = await _userRepository.GetUserBy(command.Mobile);
+            if (user is null) return result.Failed(ApplicationMessage.UserNotExist);
+
+            if (command.MobileActivateCode != user.MobileActivateCode)
+                return result.Failed("کد وارد شده صحیح نمی باشد!");
+
+            var mobileActivateCode = new Random().Next(100000, 999999).ToString();
+            user.ReCodeMobileActivateCode(mobileActivateCode);
+            user.ConfirmMobile();
+            user.LastUpdateDate = DateTime.Now;
+
+            await _userRepository.SaveChangesAsync();
+
+            return result.Succeeded("حساب شما با موفقیت فعال شد");
         }
 
         public OperationResult Logout()
@@ -112,7 +141,7 @@ namespace MarketPlace.Application.Account
                 _authHelper.SignOut();
                 return result.Succeeded("با موفقیت خارج شدید");
             }
-            catch 
+            catch
             {
                 return result.Failed("خروج با مشکل مواجه شد");
             }

@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Cryptography;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using GoogleReCaptcha.V3;
 using MarketPlace.ApplicationContract.AI.Account;
 using MarketPlace.ApplicationContract.ViewModels.Account;
 
@@ -25,12 +27,43 @@ namespace ServiceHost.Controllers
                 {
                     TempData[SuccessMessage] = result.Message;
                     TempData[InfoMessage] = "جهت تکمیل ثبت نام کد فعال سازی برای شما ارسال شد";
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("ActiveAccount",new {mobile = command.Mobile});
                 }
 
                 TempData[ErrorMessage] = result.Message;
             }
             return View(command);
+        }
+
+        [HttpGet]
+        public IActionResult ActiveAccount(string mobile)
+        {
+            if (!string.IsNullOrEmpty(mobile))
+            {
+                ViewBag.Mobile = mobile;
+                return User.Identity != null && User.Identity.IsAuthenticated ? RedirectToAction("Index", "Home") : View();
+            }
+
+            return RedirectToAction("Register");
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> ActiveAccount(ActiveMobileUserVM command)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _userApplication.ActiveUserAccount(command);
+
+                if (result.IsSucceeded)
+                {
+                    TempData[SuccessMessage] = result.Message;
+                    return RedirectToAction("Login");
+                }
+
+                TempData[ErrorMessage] = result.Message;
+            }
+
+            return RedirectToAction("ActiveAccount", new { mobile = command.Mobile });
         }
 
         [HttpGet]

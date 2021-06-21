@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "lxsQw8qS3lsf3rZGjTslTEPlwMjbCD4u/ydPhhW5pWR1JkwOmcYH1vIDdzA4RtBNtZldQ4oQvzU5Iq/Xc01ydw==",
+  "dgSpecHash": "QFCX1vSuVA2cCqbV5O4jUFPyk1TxEfX7r87i/0gag2AlHsP5XnZ51CS1+ppRzz2plz6QZZmD4fW9qIxHPTszWg==",
   "success": true,
   "projectFilePath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\MarketPlace.Domain\\MarketPlace.Domain.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\DANESH\\.nuget\\packages\\kavenegar\\1.2.4\\kavenegar.1.2.4.nupkg.sha512",
     "C:\\Users\\DANESH\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\DANESH\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\DANESH\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.2.0\\microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",
@@ -39,6 +40,7 @@
     "C:\\Users\\DANESH\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\DANESH\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\DANESH\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
+    "C:\\Users\\DANESH\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\DANESH\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\DANESH\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\DANESH\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
