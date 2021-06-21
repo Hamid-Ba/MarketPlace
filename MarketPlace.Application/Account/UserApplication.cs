@@ -102,6 +102,7 @@ namespace MarketPlace.Application.Account
             var newPassword = _passwordHasher.Hash(purePassword);
 
             user.ChangePassword(newPassword);
+            user.ReCodeMobileActivateCode(new Random().Next(100000, 999999).ToString());
             user.LastUpdateDate = DateTime.Now;
 
             var message = $"رمز عبور جدید شما : {purePassword} می باشد . لطفا بعد از ورود به حساب خود آن را تغییر دهید";

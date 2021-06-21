@@ -1,21 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using ServiceHost.Models;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
+using Framework.Application.Authentication;
+using GoogleReCaptcha.V3.Interface;
+using MarketPlace.ApplicationContract.AI.Site;
+using MarketPlace.ApplicationContract.ViewModels.Site;
 
 namespace ServiceHost.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ICaptchaValidator _captchaValidator;
+        private readonly IContactUsApplication _contactUsApplication;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ICaptchaValidator captchaValidator, IContactUsApplication contactUsApplication)
         {
-            _logger = logger;
+            _captchaValidator = captchaValidator;
+            _contactUsApplication = contactUsApplication;
         }
 
         public IActionResult Index()
@@ -23,15 +23,29 @@ namespace ServiceHost.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        [HttpGet("Contact-Us")]
+        public IActionResult ContactUs() => View();
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPost("Contact-Us"), ValidateAntiForgeryToken]
+        public async Task<IActionResult> ContactUs(CreateContactUsVM command)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            if (!await _captchaValidator.IsCaptchaPassedAsync(command.Captcha))
+            {
+                TempData[ErrorMessage] = "کد کپچای شما تایید نشد";
+                return View(command);
+            }
+
+            if (ModelState.IsValid)
+            {
+                var ip = HttpContext.Connection.RemoteIpAddress?.ToString();
+                var userId = User.GetUserId();
+
+                var result = await _contactUsApplication.SendMessage(command, ip.ToString(), userId);
+
+                TempData[SuccessMessage] = result.Message;
+            }
+
+            return View(command);
         }
     }
 }
