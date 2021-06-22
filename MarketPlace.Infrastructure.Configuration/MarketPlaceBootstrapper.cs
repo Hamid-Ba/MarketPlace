@@ -3,9 +3,12 @@ using MarketPlace.Application.Site;
 using MarketPlace.ApplicationContract.AI.Account;
 using MarketPlace.ApplicationContract.AI.Site;
 using MarketPlace.Domain.RI.Account;
+using MarketPlace.Domain.RI.Site;
 using MarketPlace.Infrastructure.EfCore.Context;
 using MarketPlace.Infrastructure.EfCore.Repository.Account;
 using MarketPlace.Infrastructure.EfCore.Repository.Site;
+using MarketPlace.Query.Contract.Site.SiteSlider;
+using MarketPlace.Query.Query.Site.SiteSlider;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -32,6 +35,15 @@ namespace MarketPlace.Infrastructure.Configuration
 
             services.AddTransient<IContactUsRepository, ContactUsRepository>();
             services.AddTransient<IContactUsApplication, ContactUsApplication>();
+
+            services.AddTransient<ISiteSliderRepository, SiteSliderRepository>();
+            services.AddTransient<ISiteSliderApplication, SiteSliderApplication>();
+
+            #endregion
+
+            #region Queries
+
+            services.AddTransient<ISiteSliderQuery, SiteSliderQuery>();
 
             #endregion
         }

@@ -20,9 +20,21 @@ namespace MarketPlace.Infrastructure.EfCore.Context
 
             modelBuilder.Entity<User>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<ContactUs>().HasQueryFilter(q => !q.IsDelete);
+            modelBuilder.Entity<SiteSlider>().HasQueryFilter(q => !q.IsDelete);
         }
 
+        #region Account
+
         public DbSet<User> Users { get; set; }
+
+        #endregion
+
+        #region Site
+
         public DbSet<ContactUs> ContactUs { get; set; }
+        public DbSet<SiteSlider> SiteSliders { get; set; }
+
+        #endregion
+
     }
 }

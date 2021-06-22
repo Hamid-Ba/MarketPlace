@@ -136,6 +136,56 @@ namespace MarketPlace.Infrastructure.EfCore.Migrations
 
                     b.ToTable("ContactUs");
                 });
+
+            modelBuilder.Entity("MarketPlace.Domain.Entities.Site.SiteSlider", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeletionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("FirstHeader")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("ImageName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDisplay")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SecondHeader")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("TextButton")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SiteSliders");
+                });
 #pragma warning restore 612, 618
         }
     }

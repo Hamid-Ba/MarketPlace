@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MarketPlace.ApplicationContract\MarketPlace.ApplicationContract.csproj" />
     <ProjectReference Include="..\MarketPlace.Infrastructure.Configuration\MarketPlace.Infrastructure.Configuration.csproj" />
+    <ProjectReference Include="..\MarketPlace.Query\MarketPlace.Query.csproj" />
   </ItemGroup>
 
 </Project>

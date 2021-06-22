@@ -11,6 +11,7 @@
           "MarketPlace.Application": "1.0.0",
           "MarketPlace.ApplicationContract": "1.0.0",
           "MarketPlace.Infrastructure.EfCore": "1.0.0",
+          "MarketPlace.Query": "1.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0"
         },
         "runtime": {
@@ -1306,6 +1307,14 @@
         "runtime": {
           "MarketPlace.Infrastructure.EfCore.dll": {}
         }
+      },
+      "MarketPlace.Query/1.0.0": {
+        "dependencies": {
+          "MarketPlace.Infrastructure.EfCore": "1.0.0"
+        },
+        "runtime": {
+          "MarketPlace.Query.dll": {}
+        }
       }
     }
   },
@@ -2148,6 +2157,11 @@
       "sha512": ""
     },
     "MarketPlace.Infrastructure.EfCore/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MarketPlace.Query/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

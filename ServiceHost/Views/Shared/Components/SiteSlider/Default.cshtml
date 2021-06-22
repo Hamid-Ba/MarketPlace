@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MarketPlace.Query.Contract.Site.SiteSlider.SiteSliderQueryVM>
+
+
+<section class="slider_section mb-70">
+    <div class="slider_area owl-carousel">
+        @foreach (var entity in Model)
+        {
+            <div class="single_slider d-flex align-items-center" data-bgimg="/img/slider/@entity.ImageName">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="slider_content">
+                                <h1> @entity.FirstHeader</h1>
+                                <h2>@entity.SecondHeader</h2>
+                                <p>@entity.Description</p>
+                                <a class="button" href="@entity.Link">@entity.TextButton</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</section>
+

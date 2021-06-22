@@ -1781,6 +1781,19 @@
         "runtime": {
           "bin/placeholder/MarketPlace.Infrastructure.EfCore.dll": {}
         }
+      },
+      "MarketPlace.Query/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "MarketPlace.Infrastructure.EfCore": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MarketPlace.Query.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MarketPlace.Query.dll": {}
+        }
       }
     }
   },
@@ -6128,6 +6141,11 @@
       "type": "project",
       "path": "../MarketPlace.Infrastructure.EfCore/MarketPlace.Infrastructure.EfCore.csproj",
       "msbuildProject": "../MarketPlace.Infrastructure.EfCore/MarketPlace.Infrastructure.EfCore.csproj"
+    },
+    "MarketPlace.Query/1.0.0": {
+      "type": "project",
+      "path": "../MarketPlace.Query/MarketPlace.Query.csproj",
+      "msbuildProject": "../MarketPlace.Query/MarketPlace.Query.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6135,6 +6153,7 @@
       "MarketPlace.Application >= 1.0.0",
       "MarketPlace.ApplicationContract >= 1.0.0",
       "MarketPlace.Infrastructure.EfCore >= 1.0.0",
+      "MarketPlace.Query >= 1.0.0",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 5.0.0"
     ]
   },
@@ -6172,6 +6191,9 @@
             },
             "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\MarketPlace.Infrastructure.EfCore\\MarketPlace.Infrastructure.EfCore.csproj": {
               "projectPath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\MarketPlace.Infrastructure.EfCore\\MarketPlace.Infrastructure.EfCore.csproj"
+            },
+            "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\MarketPlace.Query\\MarketPlace.Query.csproj": {
+              "projectPath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\MarketPlace.Query\\MarketPlace.Query.csproj"
             }
           }
         }
