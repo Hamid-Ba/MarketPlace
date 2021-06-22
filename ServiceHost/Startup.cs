@@ -29,7 +29,7 @@ namespace ServiceHost
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            MarketPlaceBootstrapper.Configure(services,Configuration.GetConnectionString("MarketPlaceConnection"));
+            MarketPlaceBootstrapper.Configure(services, Configuration.GetConnectionString("MarketPlaceConnection"));
 
             services.AddHttpContextAccessor();
             services.AddControllersWithViews();
@@ -37,7 +37,7 @@ namespace ServiceHost
             services.AddScoped<ISmsService, SmsService>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
             services.AddHttpClient<ICaptchaValidator, GoogleReCaptchaValidator>();
-            
+
 
             #region Config Authentication
 
@@ -82,6 +82,11 @@ namespace ServiceHost
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
