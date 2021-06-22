@@ -21,6 +21,7 @@ namespace MarketPlace.Infrastructure.EfCore.Context
             modelBuilder.Entity<User>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<ContactUs>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<SiteSlider>().HasQueryFilter(q => !q.IsDelete);
+            modelBuilder.Entity<SiteBanner>().HasQueryFilter(q => !q.IsDelete);
         }
 
         #region Account
@@ -33,6 +34,7 @@ namespace MarketPlace.Infrastructure.EfCore.Context
 
         public DbSet<ContactUs> ContactUs { get; set; }
         public DbSet<SiteSlider> SiteSliders { get; set; }
+        public DbSet<SiteBanner> SiteBanners { get; set; }
 
         #endregion
 

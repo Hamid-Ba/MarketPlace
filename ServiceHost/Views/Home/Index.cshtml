@@ -1,5 +1,8 @@
-﻿@{
+﻿@using MarketPlace.Query.Contract.Site.SiteBanner
+@using Framework.Application
+@{
     ViewData["Title"] = "صفحه اصلی";
+    var banners = ViewBag.Banners as IEnumerable<SiteBannerQueryVM>;
 }
 
 <!--slider area start-->
@@ -58,33 +61,27 @@
 </section>
 <!--shipping area end-->
 <!--banner area start-->
-<div class="banner_area mb-40">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-3">
-                <div class="single_banner mb-30">
-                    <div class="banner_thumb">
-                        <a href="shop.html"><img src="/img/bg/banner1.jpg" alt=""></a>
+
+@if (banners.Any(b => b.Position == BannerPosition.FirstRow))
+{
+    <div class="banner_area mb-40">
+        <div class="container">
+            <div class="row">
+                @foreach (var entity in banners.Where(b => b.Position == BannerPosition.FirstRow))
+                {
+                    <div class="@entity.ColSize">
+                        <div class="single_banner mb-30">
+                            <div class="banner_thumb">
+                                <a href="@entity.Url"><img src="/img/bg/@entity.ImageName" alt="مارکت پلیس"></a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="single_banner mb-30">
-                    <div class="banner_thumb">
-                        <a href="shop.html"><img src="/img/bg/banner2.jpg" alt=""></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3">
-                <div class="single_banner mb-30">
-                    <div class="banner_thumb">
-                        <a href="shop.html"><img src="/img/bg/banner3.jpg" alt=""></a>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>
-</div>
+}
+
 <!--banner area end-->
 <!--product area start-->
 <section class="product_area mb-46">
@@ -333,26 +330,25 @@
 </section>
 <!--product area end-->
 <!--banner area start-->
-<div class="banner_area mb-40">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="single_banner mb-30">
-                    <div class="banner_thumb">
-                        <a href="shop.html"><img src="/img/bg/banner4.jpg" alt=""></a>
+@if (banners.Any(b => b.Position == BannerPosition.SecondRow))
+{
+    <div class="banner_area mb-40">
+        <div class="container">
+            <div class="row">
+                @foreach (var entity in banners.Where(b => b.Position == BannerPosition.SecondRow))
+                {
+                    <div class="@entity.ColSize">
+                        <div class="single_banner mb-30">
+                            <div class="banner_thumb">
+                                <a href="@entity.Url"><img src="/img/bg/@entity.ImageName" alt="مارکت پلیس"></a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="single_banner mb-30">
-                    <div class="banner_thumb">
-                        <a href="shop.html"><img src="/img/bg/banner5.jpg" alt=""></a>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>
-</div>
+}
 <!--banner area end-->
 <!--top- category area start-->
 <section class="top_category_product mb-70">
@@ -947,27 +943,25 @@
 </section>
 <!--product area end-->
 <!--banner area start-->
-<div class="banner_area mb-40">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9 col-md-9">
-                <div class="single_banner mb-30">
-                    <div class="banner_thumb">
-                        <a href="shop.html"><img src="/img/bg/banner6.jpg" alt=""></a>
+@if (banners.Any(b => b.Position == BannerPosition.ThirdRow))
+{
+    <div class="banner_area mb-40">
+        <div class="container">
+            <div class="row">
+                @foreach (var entity in banners.Where(b => b.Position == BannerPosition.ThirdRow))
+                {
+                    <div class="@entity.ColSize">
+                        <div class="single_banner mb-30">
+                            <div class="banner_thumb">
+                                <a href="@entity.Url"><img src="/img/bg/@entity.ImageName" alt="مارکت پلیس"></a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3">
-                <div class="single_banner mb-30">
-                    <div class="banner_thumb">
-                        <a href="shop.html"><img src="/img/bg/banner7.jpg" alt=""></a>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>
-</div>
-<!--banner area end-->
+}<!--banner area end-->
 <!--product area start-->
 <section class="product_area mb-46">
     <div class="container">
