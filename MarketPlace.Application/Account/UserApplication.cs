@@ -113,6 +113,28 @@ namespace MarketPlace.Application.Account
             return result.Succeeded("رمز عبور شما با موفقیت تغییر کرد");
         }
 
+        public async Task<OperationResult> ChangePassword(long userId, ChangePasswordUserVM command)
+        {
+            var result = new OperationResult();
+
+            var user = await _userRepository.GetEntityByIdAsync(userId);
+            if (user is null) return result.Failed(ApplicationMessage.UserNotExist);
+
+            var passwordVerified = _passwordHasher.Check(user.Password, command.CurrentPassword);
+            if (!passwordVerified.Verified) return result.Failed("رمز عبور شما اشتباه می باشد");
+            
+            var newPasswordVerified = _passwordHasher.Check(user.Password, command.NewPassword);
+            if (newPasswordVerified.Verified) return result.Failed("لطفا رمز عبور جدیدی را مدنظر بگیرید");
+
+            var newPassword = _passwordHasher.Hash(command.NewPassword);
+            user.ChangePassword(newPassword);
+            user.LastUpdateDate = DateTime.Now;
+
+            await _userRepository.SaveChangesAsync();
+
+            return Logout();
+        }
+
         public async Task<OperationResult> ActiveUserAccount(ActiveMobileUserVM command)
         {
             var result = new OperationResult();
