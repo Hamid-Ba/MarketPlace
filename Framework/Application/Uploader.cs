@@ -9,9 +9,9 @@ namespace Framework.Application
     {
         public static string ImageUploader(IFormFile file, string path, string currentImage)
         {
-            if (file is null) return "";
+            if (file is null || !file.IsImage()) return "";
 
-            var directoryPath = $"{Directory.GetCurrentDirectory()}\\wwwroot\\Pictures\\{path}";
+            var directoryPath = $"{Directory.GetCurrentDirectory()}\\wwwroot\\img\\{path}";
 
             if (!Directory.Exists(directoryPath))
                 Directory.CreateDirectory(directoryPath);
@@ -19,7 +19,7 @@ namespace Framework.Application
             //If currentImage Exists
             ImageRemover(currentImage);
 
-            var fileName = $"{DateTime.Now}-{file.FileName}";
+            var fileName = $"{DateTime.Now.ToFileName()}-{file.FileName}";
             var filePath = $"{directoryPath}\\{fileName}";
             using var output = File.Create(filePath);
             file.CopyTo(output);
@@ -29,14 +29,14 @@ namespace Framework.Application
         public static void ImageRemover(string imageName)
         {
             if (string.IsNullOrWhiteSpace(imageName)) return;
-            var imagePath = $"{Directory.GetCurrentDirectory()}\\wwwroot\\Pictures\\{imageName}";
+            var imagePath = $"{Directory.GetCurrentDirectory()}\\wwwroot\\img\\{imageName}";
             if (File.Exists(imagePath)) File.Delete(imagePath);
         }
 
         public static void DirectoryRemover(string directory)
         {
             if (string.IsNullOrWhiteSpace(directory)) return;
-            var directoryPath = $"{Directory.GetCurrentDirectory()}\\wwwroot\\Pictures\\{directory}";
+            var directoryPath = $"{Directory.GetCurrentDirectory()}\\wwwroot\\img\\{directory}";
             if (Directory.Exists(directoryPath)) Directory.Delete(directoryPath, true);
         }
     }

@@ -18,3 +18,5 @@ C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\M
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Infrastructure.EfCore\obj\Debug\net5.0\ref\MarketPlace.Infrastructure.EfCore.dll
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Infrastructure.EfCore\obj\Debug\net5.0\MarketPlace.Infrastructure.EfCore.pdb
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Infrastructure.EfCore\obj\Debug\net5.0\MarketPlace.Infrastructure.EfCore.genruntimeconfig.cache
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Infrastructure.EfCore\bin\Debug\net5.0\MarketPlace.ApplicationContract.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Infrastructure.EfCore\bin\Debug\net5.0\MarketPlace.ApplicationContract.pdb

@@ -49,6 +49,23 @@ namespace MarketPlace.Application.Account
             return result.Succeeded("ثبت نام شما با موفقیت انجام شد ");
         }
 
+        public async Task<OperationResult> Edit(EditUserVM command)
+        {
+            var result = new OperationResult();
+
+            var user = _userRepository.GetEntityById(command.UserId);
+
+            if (user is null) return result.Failed(ApplicationMessage.UserNotExist);
+            if (user.IsBlocked) return result.Failed(ApplicationMessage.UserBlocked);
+
+            var avatar = Uploader.ImageUploader(command.AvatarFile, "UserAvatar", command.Avatar);
+            user.Edit(command.FirstName, command.LastName, avatar);
+
+            await _userRepository.SaveChangesAsync();
+
+            return result.Succeeded();
+        }
+
         public async Task<OperationResult> Login(LoginUserVM command)
         {
             var result = new OperationResult();
@@ -82,7 +99,7 @@ namespace MarketPlace.Application.Account
 
             var message =
                 $"{user.FirstName} {user.LastName} عزیز ، جهت بازیابی رمز عبور خود کد زیر را وارد نمایید : {user.MobileActivateCode}";
-            _smsService.SendSms(user.Mobile,message);
+            _smsService.SendSms(user.Mobile, message);
 
             return result.Succeeded("کد فعال سازی برای شما ارسال شد ، جهت ادامه پردازش آن را وارد نمایید");
         }
@@ -106,7 +123,7 @@ namespace MarketPlace.Application.Account
             user.LastUpdateDate = DateTime.Now;
 
             var message = $"رمز عبور جدید شما : {purePassword} می باشد . لطفا بعد از ورود به حساب خود آن را تغییر دهید";
-            _smsService.SendSms(user.Mobile,message);
+            _smsService.SendSms(user.Mobile, message);
 
             await _userRepository.SaveChangesAsync();
 
@@ -122,7 +139,7 @@ namespace MarketPlace.Application.Account
 
             var passwordVerified = _passwordHasher.Check(user.Password, command.CurrentPassword);
             if (!passwordVerified.Verified) return result.Failed("رمز عبور شما اشتباه می باشد");
-            
+
             var newPasswordVerified = _passwordHasher.Check(user.Password, command.NewPassword);
             if (newPasswordVerified.Verified) return result.Failed("لطفا رمز عبور جدیدی را مدنظر بگیرید");
 
@@ -169,5 +186,8 @@ namespace MarketPlace.Application.Account
                 return result.Failed("خروج با مشکل مواجه شد");
             }
         }
+
+        public async Task<EditUserVM> GetDetailForEditBy(long id) => await _userRepository.GetDetailForEditBy(id);
+
     }
 }

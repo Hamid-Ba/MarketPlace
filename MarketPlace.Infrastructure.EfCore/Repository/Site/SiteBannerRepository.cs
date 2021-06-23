@@ -3,7 +3,7 @@ using MarketPlace.Domain.Entities.Site;
 using MarketPlace.Domain.RI.Site;
 using MarketPlace.Infrastructure.EfCore.Context;
 
-namespace MarketPlace.Infrastructure.EfCore.Repository.Account
+namespace MarketPlace.Infrastructure.EfCore.Repository.Site
 {
     public class SiteBannerRepository : Repository<SiteBanner>, ISiteBannerRepository
     {

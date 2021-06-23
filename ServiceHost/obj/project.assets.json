@@ -37,6 +37,18 @@
           "lib/netstandard2.0/Kavenegar.dll": {}
         }
       },
+      "LazZiya.ImageResize/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "4.5.1"
+        },
+        "compile": {
+          "lib/netcoreapp2.1/LazZiya.ImageResize.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/LazZiya.ImageResize.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Authentication/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -1505,7 +1517,7 @@
           "Microsoft.Win32.SystemEvents": "4.7.0"
         },
         "compile": {
-          "ref/netcoreapp3.0/_._": {}
+          "ref/netcoreapp3.0/System.Drawing.Common.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/System.Drawing.Common.dll": {}
@@ -2374,6 +2386,7 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Kavenegar": "1.2.4",
+          "LazZiya.ImageResize": "2.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "2.2.0",
           "Microsoft.AspNetCore.Mvc.Abstractions": "2.2.0",
           "Microsoft.EntityFrameworkCore": "5.0.7"
@@ -2416,7 +2429,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "Framework": "1.0.0"
+          "Framework": "1.0.0",
+          "MarketPlace.ApplicationContract": "1.0.0"
         },
         "compile": {
           "bin/placeholder/MarketPlace.Domain.dll": {}
@@ -2512,6 +2526,21 @@
         "kavenegar.nuspec",
         "lib/net35/Kavenegar.dll",
         "lib/netstandard2.0/Kavenegar.dll"
+      ]
+    },
+    "LazZiya.ImageResize/2.0.0": {
+      "sha512": "DvAnY84QvGsG5H3oVZPmw58BiXGZmrzGdcgL+0cAPbeLPnnXk6071YoOLq3DxXpg3Y+KjsrrpevMDmSiqCWP+w==",
+      "type": "package",
+      "path": "lazziya.imageresize/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.ico",
+        "icon.png",
+        "lazziya.imageresize.2.0.0.nupkg.sha512",
+        "lazziya.imageresize.nuspec",
+        "lib/netcoreapp2.1/LazZiya.ImageResize.dll",
+        "license.txt"
       ]
     },
     "Microsoft.AspNetCore.Authentication/2.2.0": {

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Framework.Application;
+using Microsoft.AspNetCore.Http;
 
 namespace MarketPlace.ApplicationContract.ViewModels.Account
 {
@@ -54,6 +55,27 @@ namespace MarketPlace.ApplicationContract.ViewModels.Account
 
         [Display(Name = "من را به یاد بسپار")]
         public bool IsKeep { get; set; }
+    }
+
+    public class EditUserVM : CaptchaViewModel
+    {
+        public long UserId { get; set; }
+
+        [Display(Name = "نام")]
+        [Required(ErrorMessage = ValidationMessage.IsRequired)]
+        [MaxLength(85, ErrorMessage = "حداکثر تعداد کاراکتر مجاز {1} می باشد")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "نام خانوادگی")]
+        [Required(ErrorMessage = ValidationMessage.IsRequired)]
+        [MaxLength(125, ErrorMessage = "حداکثر تعداد کاراکتر مجاز {1} می باشد")]
+        public string LastName { get; set; }
+
+        [Display(Name = "تصویر")]
+        public string Avatar { get;  set; }
+
+        [Display(Name = "فایل تصویر")]
+        public IFormFile AvatarFile { get; set; }
     }
 
     public class ForgotPasswordUserVM : CaptchaViewModel

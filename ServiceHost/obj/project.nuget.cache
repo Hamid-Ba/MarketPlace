@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "2SnoPRPLJTBQVN3ZwPN7i9knRLxSjSvarlFxIVzbj/7p7cHzw6Pz1IUsPl4Z8MPkPiDN/G3LvDstJEe0J9lMhA==",
+  "dgSpecHash": "xTi4F/PjX2NZzfzLRMud5cgKPJV1kT5dGnSQeSgskzkMYS4ui2VYXr0ouKaHbVVeO7TvHR8yI4a8MH4GLAO1/Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\ServiceHost\\ServiceHost.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DANESH\\.nuget\\packages\\googlerecaptcha.v3\\1.3.1\\googlerecaptcha.v3.1.3.1.nupkg.sha512",
     "C:\\Users\\DANESH\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\DANESH\\.nuget\\packages\\kavenegar\\1.2.4\\kavenegar.1.2.4.nupkg.sha512",
+    "C:\\Users\\DANESH\\.nuget\\packages\\lazziya.imageresize\\2.0.0\\lazziya.imageresize.2.0.0.nupkg.sha512",
     "C:\\Users\\DANESH\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\DANESH\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\DANESH\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.2.0\\microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",

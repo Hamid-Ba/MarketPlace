@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "uMQW9+PCL7BuMnQAaP4t7C+p5nQEgNofpCVNHX8cWLT5K4CMDprMrbhMkENJqBgxfDTBvYuPRUW+7ijC1qD11w==",
+  "dgSpecHash": "qs98z3WzXQn2UEqDXJRvIOkCLMagb/cXtNn29VmK9f68f7x2P818CCJqVx2b4+kE1PC+yN7c2CmTufR9kKGukw==",
   "success": true,
   "projectFilePath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\MarketPlace.Query\\MarketPlace.Query.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DANESH\\.nuget\\packages\\kavenegar\\1.2.4\\kavenegar.1.2.4.nupkg.sha512",
+    "C:\\Users\\DANESH\\.nuget\\packages\\lazziya.imageresize\\2.0.0\\lazziya.imageresize.2.0.0.nupkg.sha512",
     "C:\\Users\\DANESH\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\DANESH\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\DANESH\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.2.0\\microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",

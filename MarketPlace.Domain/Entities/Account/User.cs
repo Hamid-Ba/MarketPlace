@@ -34,17 +34,10 @@ namespace MarketPlace.Domain.Entities.Account
             IsBlocked = false;
         }
 
-        public void Edit(string firstName, string lastName, string email, string emailActivateCode, bool isEmailConfirmed, string mobile,
-            string mobileActivateCode, bool isMobileConfirmed, string avatar)
+        public void Edit(string firstName, string lastName, string avatar)
         {
             FirstName = firstName;
             LastName = lastName;
-            Email = email;
-            EmailActivateCode = emailActivateCode;
-            IsEmailConfirmed = isEmailConfirmed;
-            Mobile = mobile;
-            MobileActivateCode = mobileActivateCode;
-            IsMobileConfirmed = isMobileConfirmed;
 
             if (!string.IsNullOrEmpty(avatar))
                 Avatar = avatar;

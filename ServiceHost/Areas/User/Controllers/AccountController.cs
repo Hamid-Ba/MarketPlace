@@ -46,5 +46,34 @@ namespace ServiceHost.Areas.User.Controllers
 
             return View(command);
         }
+
+        [HttpGet("Change-Profile")]
+        public async Task<IActionResult> ChangeProfile() => View(await _userApplication.GetDetailForEditBy(User.GetUserId()));
+
+        [HttpPost("Change-Profile")]
+        public async Task<IActionResult> ChangeProfile(EditUserVM command)
+        {
+            if (!await _captchaValidator.IsCaptchaPassedAsync(command.Captcha))
+            {
+                TempData[ErrorMessage] = "کپچای شما تایید نشد";
+                return View(command);
+            }
+
+            if (ModelState.IsValid)
+            {
+                var result = await _userApplication.Edit(command);
+
+                if (result.IsSucceeded)
+                {
+                    TempData[SuccessMessage] = result.Message;
+                    TempData[InfoMessage] = "پیشنهاد می شود مجدداً وارد شوید";
+                    return RedirectToAction("ChangeProfile");
+                }
+
+                TempData[ErrorMessage] = result.Message;
+            }
+
+            return View(command);
+        }
     }
 }

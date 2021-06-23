@@ -17,3 +17,5 @@ C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\M
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Query\obj\Debug\net5.0\MarketPlace.Query.dll
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Query\obj\Debug\net5.0\ref\MarketPlace.Query.dll
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Query\obj\Debug\net5.0\MarketPlace.Query.pdb
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Query\bin\Debug\net5.0\MarketPlace.ApplicationContract.dll
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\MarketPlace.Query\bin\Debug\net5.0\MarketPlace.ApplicationContract.pdb
