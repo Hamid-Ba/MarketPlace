@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
-using AuthenticationProperties = Microsoft.AspNetCore.Http.Authentication.AuthenticationProperties;
 
 namespace Framework.Application.Authentication
 {
@@ -39,6 +36,8 @@ namespace Framework.Application.Authentication
                 new ClaimsPrincipal(claimsIdentity), authProperties);
 
         }
+
+        public long GetUserId() =>  _contextAccessor.HttpContext.User.GetUserId();
 
         public async void SignOut() => await _contextAccessor.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
     }

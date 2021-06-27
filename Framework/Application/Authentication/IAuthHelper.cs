@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Threading.Tasks;
 
 namespace Framework.Application.Authentication
 {
@@ -6,5 +6,7 @@ namespace Framework.Application.Authentication
     {
         void SignOut();
         void Signin(AuthViewModel account);
+        long GetUserId();
+
     }
 }

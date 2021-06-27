@@ -1,12 +1,16 @@
 ﻿using MarketPlace.Application.Account;
 using MarketPlace.Application.Site;
+using MarketPlace.Application.Tickets;
 using MarketPlace.ApplicationContract.AI.Account;
 using MarketPlace.ApplicationContract.AI.Site;
+using MarketPlace.ApplicationContract.AI.Tickets;
 using MarketPlace.Domain.RI.Account;
 using MarketPlace.Domain.RI.Site;
+using MarketPlace.Domain.RI.Tickets;
 using MarketPlace.Infrastructure.EfCore.Context;
 using MarketPlace.Infrastructure.EfCore.Repository.Account;
 using MarketPlace.Infrastructure.EfCore.Repository.Site;
+using MarketPlace.Infrastructure.EfCore.Repository.Tickets;
 using MarketPlace.Query.Contract.Site.SiteBanner;
 using MarketPlace.Query.Contract.Site.SiteSlider;
 using MarketPlace.Query.Query.Site.SiteBanner;
@@ -43,6 +47,14 @@ namespace MarketPlace.Infrastructure.Configuration
 
             services.AddTransient<ISiteBannerRepository, SiteBannerRepository>();
             services.AddTransient<ISiteBannerApplication, SiteBannerApplication>();
+
+            #endregion
+
+            #region Ticket
+
+            services.AddTransient<ITicketRepository, TicketRepository>();
+            services.AddTransient<ITicketApplication, TicketApplication>();
+
             #endregion
 
             #region Queries

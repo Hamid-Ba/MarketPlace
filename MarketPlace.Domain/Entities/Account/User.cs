@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Security.Cryptography;
+using System.Collections.Generic;
 using Framework.Domain;
+using MarketPlace.Domain.Entities.Tickets;
 
 namespace MarketPlace.Domain.Entities.Account
 {
@@ -17,6 +18,8 @@ namespace MarketPlace.Domain.Entities.Account
         public string Password { get; private set; }
         public string Avatar { get; private set; }
         public bool IsBlocked { get; private set; }
+
+        public List<Ticket> Tickets { get; private set; }
 
         public User(string firstName, string lastName, string email, string emailActivateCode, bool isEmailConfirmed, string mobile,
             string mobileActivateCode, bool isMobileConfirmed, string password, string avatar)

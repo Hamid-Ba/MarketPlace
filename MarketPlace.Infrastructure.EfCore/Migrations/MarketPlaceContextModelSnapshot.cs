@@ -225,6 +225,102 @@ namespace MarketPlace.Infrastructure.EfCore.Migrations
 
                     b.ToTable("SiteSliders");
                 });
+
+            modelBuilder.Entity("MarketPlace.Domain.Entities.Tickets.Ticket", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeletionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsReadByAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsReadByOwner")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Necessary")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Section")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Tickets");
+                });
+
+            modelBuilder.Entity("MarketPlace.Domain.Entities.Tickets.Ticket", b =>
+                {
+                    b.HasOne("MarketPlace.Domain.Entities.Account.User", "User")
+                        .WithMany("Tickets")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.OwnsMany("MarketPlace.Domain.Entities.Tickets.TicketMessage", "Messages", b1 =>
+                        {
+                            b1.Property<long>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("bigint")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("Text")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<long>("TicketId")
+                                .HasColumnType("bigint");
+
+                            b1.Property<long>("UserId")
+                                .HasColumnType("bigint");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("TicketId");
+
+                            b1.ToTable("TicketMessage");
+
+                            b1.WithOwner("Ticket")
+                                .HasForeignKey("TicketId");
+
+                            b1.Navigation("Ticket");
+                        });
+
+                    b.Navigation("Messages");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MarketPlace.Domain.Entities.Account.User", b =>
+                {
+                    b.Navigation("Tickets");
+                });
 #pragma warning restore 612, 618
         }
     }

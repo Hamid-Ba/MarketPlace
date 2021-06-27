@@ -1,0 +1,72 @@
+﻿using System.Threading.Tasks;
+using Framework.Application;
+using Framework.Application.Authentication;
+using Framework.Application.TicketComponents;
+using MarketPlace.ApplicationContract.AI.Tickets;
+using MarketPlace.ApplicationContract.ViewModels.Tickets;
+using MarketPlace.Domain.Entities.Tickets;
+using MarketPlace.Domain.RI.Tickets;
+
+namespace MarketPlace.Application.Tickets
+{
+    public class TicketApplication : ITicketApplication
+    {
+        private readonly IAuthHelper _authHelper;
+        private readonly ITicketRepository _ticketRepository;
+
+        public TicketApplication(IAuthHelper authHelper, ITicketRepository ticketRepository)
+        {
+            _authHelper = authHelper;
+            _ticketRepository = ticketRepository;
+        }
+
+
+        public async Task<OperationResult> Create(CreateTicketVM command)
+        {
+            OperationResult result = new();
+
+            try
+            {
+                if (command.UserId != _authHelper.GetUserId()) return result.Failed("شما دسترسی به تیکت دیگران ندارید");
+
+                var ticket = new Ticket(command.UserId, command.Title, command.Section, TicketStatus.Received,
+                    command.Necessary, true, false);
+
+                await _ticketRepository.AddEntityAsync(ticket);
+                await _ticketRepository.SaveChangesAsync();
+
+                var message = new TicketMessage(ticket.Id, ticket.UserId, command.Text);
+                ticket.AddMessage(message);
+
+                await _ticketRepository.SaveChangesAsync();
+
+                return result.Succeeded("پیام شما با موفقیت ارسال شد");
+            }
+            catch { return result.Failed(ApplicationMessage.GoesWrong); }
+        }
+
+        public async Task<OperationResult> AddMessage(AddMessageTicketVM command)
+        {
+            OperationResult result = new();
+
+            try
+            {
+                if (command.UserId != _authHelper.GetUserId()) return result.Failed("شما دسترسی به تیکت دیگران ندارید");
+
+                var ticket = await _ticketRepository.GetEntityByIdAsync(command.TicketId);
+                if (ticket is null) return result.Failed("همچین تیکتی وجود ندارد");
+
+                ticket.WhoReadTicket(true, false);
+
+                var message = new TicketMessage(command.TicketId, command.UserId, command.Text);
+                ticket.AddMessage(message);
+
+                await _ticketRepository.SaveChangesAsync();
+
+                return result.Succeeded("پیام شما با موفقیت ارسال شد");
+            }
+            catch { return result.Failed(ApplicationMessage.GoesWrong); }
+            
+        }
+    }
+}
