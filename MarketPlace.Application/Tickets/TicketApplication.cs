@@ -29,6 +29,8 @@ namespace MarketPlace.Application.Tickets
             {
                 if (command.UserId != _authHelper.GetUserId()) return result.Failed("شما دسترسی به تیکت دیگران ندارید");
 
+                if (string.IsNullOrWhiteSpace(command.Text)) return result.Failed("پیام نمی تواند خالی باشد");
+
                 var ticket = new Ticket(command.UserId, command.Title, command.Section, TicketStatus.Received,
                     command.Necessary, true, false);
 
@@ -52,6 +54,7 @@ namespace MarketPlace.Application.Tickets
             try
             {
                 if (command.UserId != _authHelper.GetUserId()) return result.Failed("شما دسترسی به تیکت دیگران ندارید");
+                if (string.IsNullOrWhiteSpace(command.Text)) return result.Failed("پیام نمی تواند خالی باشد");
 
                 var ticket = await _ticketRepository.GetEntityByIdAsync(command.TicketId);
                 if (ticket is null) return result.Failed("همچین تیکتی وجود ندارد");
@@ -66,7 +69,7 @@ namespace MarketPlace.Application.Tickets
                 return result.Succeeded("پیام شما با موفقیت ارسال شد");
             }
             catch { return result.Failed(ApplicationMessage.GoesWrong); }
-            
+
         }
     }
 }

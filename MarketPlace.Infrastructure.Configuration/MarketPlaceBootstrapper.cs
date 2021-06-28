@@ -13,8 +13,10 @@ using MarketPlace.Infrastructure.EfCore.Repository.Site;
 using MarketPlace.Infrastructure.EfCore.Repository.Tickets;
 using MarketPlace.Query.Contract.Site.SiteBanner;
 using MarketPlace.Query.Contract.Site.SiteSlider;
+using MarketPlace.Query.Contract.Tickets;
 using MarketPlace.Query.Query.Site.SiteBanner;
 using MarketPlace.Query.Query.Site.SiteSlider;
+using MarketPlace.Query.Query.Tickets;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -63,6 +65,7 @@ namespace MarketPlace.Infrastructure.Configuration
 
             services.AddTransient<ISiteBannerQuery, SiteBannerQuery>();
 
+            services.AddTransient<ITicketQuery, TicketQuery>();
             #endregion
         }
     }
