@@ -57,7 +57,7 @@
                                                 <td>@entity.Status.GetEnumName()</td>
                                                 <td>@entity.Necessary.GetEnumName()</td>
                                                 <td>@entity.Section.GetEnumName()</td>
-                                                <td><a asp-action="CreateTicket" class="view">مشاهده</a></td>
+                                                <td><a asp-action="Detail" asp-route-ticketId="@entity.Id" class="view">مشاهده</a></td>
                                             </tr>
                                         }
                                     </tbody>

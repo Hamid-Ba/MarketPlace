@@ -46,5 +46,40 @@ namespace ServiceHost.Areas.User.Controllers
 
             return View(command);
         }
+
+        [HttpGet("tickets/{ticketId}")]
+        public async Task<IActionResult> Detail(long ticketId)
+        {
+            var ticket = await _ticketQuery.GetTicketDetailBy(ticketId, User.GetUserId());
+
+            if (ticket is null)
+            {
+                TempData[ErrorMessage] = "شما دسترسی به تیکت بقیه ندارید";
+                return RedirectToAction("Index");
+            }
+
+            return View(await _ticketQuery.GetTicketDetailBy(ticketId, User.GetUserId()));
+        }
+
+        [HttpPost("answer-ticket"), ValidateAntiForgeryToken]
+        public async Task<IActionResult> SendMessage(AddMessageTicketVM command)
+        {
+            command.UserId = User.GetUserId();
+            
+            if (ModelState.IsValid)
+            {
+                var result = await _ticketApplication.AddMessage(command);
+
+                if (result.IsSucceeded)
+                {
+                    TempData[SuccessMessage] = result.Message;
+                    return RedirectToAction("Detail", new { ticketId = command.TicketId, area = "User" });
+                }
+
+                TempData[ErrorMessage] = result.Message;
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }

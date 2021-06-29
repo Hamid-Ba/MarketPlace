@@ -54,6 +54,7 @@ namespace MarketPlace.Application.Tickets
             try
             {
                 if (command.UserId != _authHelper.GetUserId()) return result.Failed("شما دسترسی به تیکت دیگران ندارید");
+                if(_ticketRepository.Exists(t => t.UserId != command.UserId && t.Id == command.TicketId)) return result.Failed("شما دسترسی به تیکت دیگران ندارید");
                 if (string.IsNullOrWhiteSpace(command.Text)) return result.Failed("پیام نمی تواند خالی باشد");
 
                 var ticket = await _ticketRepository.GetEntityByIdAsync(command.TicketId);

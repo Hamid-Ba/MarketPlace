@@ -1,4 +1,6 @@
-﻿namespace MarketPlace.Domain.Entities.Tickets
+﻿using System;
+
+namespace MarketPlace.Domain.Entities.Tickets
 {
     public class TicketMessage
     {
@@ -6,6 +8,7 @@
         public long TicketId { get; private set; }
         public long UserId { get; private set; }
         public string Text { get; private set; }
+        public DateTime CreationDate { get; private set; }
 
         public Ticket Ticket { get; private set; }
 
@@ -14,6 +17,7 @@
             TicketId = ticketId;
             UserId = userId;
             Text = text;
+            CreationDate = DateTime.Now;
         }
     }
 }

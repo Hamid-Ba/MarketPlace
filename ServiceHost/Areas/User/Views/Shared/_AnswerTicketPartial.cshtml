@@ -1,0 +1,11 @@
+﻿@model MarketPlace.ApplicationContract.ViewModels.Tickets.AddMessageTicketVM
+
+<form method="post" asp-area="User" asp-controller="Ticket" asp-action="SendMessage">
+    <input type="hidden" asp-for="TicketId" />
+    <label>پیام</label> <span asp-validation-for="Text" class="text-danger float-right"></span>
+    <textarea id="TinyArea" asp-for="Text" class="form-control"></textarea>
+    <span></span>
+    <button type="submit" class="btn btn-info">
+        ارسال پاسخ
+    </button>
+</form>

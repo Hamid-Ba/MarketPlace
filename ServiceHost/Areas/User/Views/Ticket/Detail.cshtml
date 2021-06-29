@@ -1,0 +1,74 @@
+﻿@using MarketPlace.ApplicationContract.ViewModels.Tickets
+@model MarketPlace.Query.Contract.Tickets.TicketQueryVM
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+@section Styles
+{
+    <link rel="stylesheet" href="/css/ChatRoom.css" />
+}
+
+
+
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li>@ViewData["Title"]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    <partial name="_UserAccountSideBarVM" />
+                </div>
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+                        <div class="tab-pane fade active show" id="account-details">
+                            <h3>@ViewData["Title"] </h3>
+
+                            <partial name="_AnswerTicketPartial" model="@(new AddMessageTicketVM{TicketId = Model.Id})" />
+
+                            <hr />
+                            <ul class="messages" id="messages">
+                                @if (Model.Messages != null && Model.Messages.Any())
+                                {
+                                    foreach (var message in Model.Messages)
+                                    {
+                                        <li class="message @(message.UserId == Model.UserId ? "right" : "left") appeared">
+                                            <div class="avatar">
+                                                <img src="/img/avatar.jpg" alt="Alternate Text">
+                                            </div>
+                                            <div class="text_wrapper">
+                                                <div class="time">
+                                                    @message.SentDate
+                                                </div>
+                                                <div class="text" style="font-size: 16px">
+                                                    @Html.Raw(message.Text)
+                                                </div>
+                                            </div>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
