@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Framework.Domain;
+using MarketPlace.Domain.Entities.StoreAgg;
 using MarketPlace.Domain.Entities.Tickets;
 
 namespace MarketPlace.Domain.Entities.Account
@@ -20,6 +21,7 @@ namespace MarketPlace.Domain.Entities.Account
         public bool IsBlocked { get; private set; }
 
         public List<Ticket> Tickets { get; private set; }
+        public List<Store> Stores { get; private set; }
 
         public User(string firstName, string lastName, string email, string emailActivateCode, bool isEmailConfirmed, string mobile,
             string mobileActivateCode, bool isMobileConfirmed, string password, string avatar)

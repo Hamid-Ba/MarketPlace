@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using MarketPlace.Domain.Entities.Account;
 using MarketPlace.Domain.Entities.Site;
+using MarketPlace.Domain.Entities.StoreAgg;
 using MarketPlace.Domain.Entities.Tickets;
 using MarketPlace.Infrastructure.EfCore.Mapping.Account;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +25,7 @@ namespace MarketPlace.Infrastructure.EfCore.Context
             modelBuilder.Entity<SiteSlider>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<SiteBanner>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Ticket>().HasQueryFilter(q => !q.IsDelete);
+            modelBuilder.Entity<Store>().HasQueryFilter(q => !q.IsDelete);
         }
 
         #region Account
@@ -43,6 +45,12 @@ namespace MarketPlace.Infrastructure.EfCore.Context
         #region Ticket
 
         public DbSet<Ticket> Tickets { get; set; }
+
+        #endregion
+
+        #region Store
+
+        public DbSet<Store> Stores { get; set; }
 
         #endregion
 

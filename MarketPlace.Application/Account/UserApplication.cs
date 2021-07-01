@@ -187,6 +187,12 @@ namespace MarketPlace.Application.Account
             }
         }
 
+        public async Task<bool> IsUserBlocked(long userId)
+        {
+            var user = await _userRepository.GetEntityByIdAsync(userId);
+            return user.IsBlocked;
+        }
+
         public async Task<EditUserVM> GetDetailForEditBy(long id) => await _userRepository.GetDetailForEditBy(id);
 
     }

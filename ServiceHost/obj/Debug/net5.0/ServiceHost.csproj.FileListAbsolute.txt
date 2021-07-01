@@ -186,3 +186,5 @@ C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\S
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\User\Views\Ticket\Index.cshtml.g.cs
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\User\Views\Ticket\Detail.cshtml.g.cs
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\User\Views\Shared\_AnswerTicketPartial.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\User\Views\Store\SendRequest.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\User\Views\Store\Index.cshtml.g.cs

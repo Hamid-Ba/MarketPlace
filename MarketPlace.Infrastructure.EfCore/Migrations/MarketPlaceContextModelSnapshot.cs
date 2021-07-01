@@ -226,6 +226,65 @@ namespace MarketPlace.Infrastructure.EfCore.Migrations
                     b.ToTable("SiteSliders");
                 });
 
+            modelBuilder.Entity("MarketPlace.Domain.Entities.StoreAgg.Store", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("AdminDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeletionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MobileNumber")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(125)
+                        .HasColumnType("nvarchar(125)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StoreGivenStatusReason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Stores");
+                });
+
             modelBuilder.Entity("MarketPlace.Domain.Entities.Tickets.Ticket", b =>
                 {
                     b.Property<long>("Id")
@@ -275,6 +334,17 @@ namespace MarketPlace.Infrastructure.EfCore.Migrations
                     b.ToTable("Tickets");
                 });
 
+            modelBuilder.Entity("MarketPlace.Domain.Entities.StoreAgg.Store", b =>
+                {
+                    b.HasOne("MarketPlace.Domain.Entities.Account.User", "User")
+                        .WithMany("Stores")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MarketPlace.Domain.Entities.Tickets.Ticket", b =>
                 {
                     b.HasOne("MarketPlace.Domain.Entities.Account.User", "User")
@@ -322,6 +392,8 @@ namespace MarketPlace.Infrastructure.EfCore.Migrations
 
             modelBuilder.Entity("MarketPlace.Domain.Entities.Account.User", b =>
                 {
+                    b.Navigation("Stores");
+
                     b.Navigation("Tickets");
                 });
 #pragma warning restore 612, 618

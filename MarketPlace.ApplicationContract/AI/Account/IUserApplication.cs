@@ -7,6 +7,7 @@ namespace MarketPlace.ApplicationContract.AI.Account
     public interface IUserApplication
     {
         OperationResult Logout();
+        Task<bool> IsUserBlocked(long userId);
         Task<EditUserVM> GetDetailForEditBy(long id);
         Task<OperationResult> Edit(EditUserVM command);
         Task<OperationResult> Login(LoginUserVM command);

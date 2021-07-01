@@ -1,21 +1,27 @@
 ﻿using MarketPlace.Application.Account;
 using MarketPlace.Application.Site;
+using MarketPlace.Application.Store;
 using MarketPlace.Application.Tickets;
 using MarketPlace.ApplicationContract.AI.Account;
 using MarketPlace.ApplicationContract.AI.Site;
+using MarketPlace.ApplicationContract.AI.StoreAgg;
 using MarketPlace.ApplicationContract.AI.Tickets;
 using MarketPlace.Domain.RI.Account;
 using MarketPlace.Domain.RI.Site;
+using MarketPlace.Domain.RI.StoreAgg;
 using MarketPlace.Domain.RI.Tickets;
 using MarketPlace.Infrastructure.EfCore.Context;
 using MarketPlace.Infrastructure.EfCore.Repository.Account;
 using MarketPlace.Infrastructure.EfCore.Repository.Site;
+using MarketPlace.Infrastructure.EfCore.Repository.StoreAgg;
 using MarketPlace.Infrastructure.EfCore.Repository.Tickets;
 using MarketPlace.Query.Contract.Site.SiteBanner;
 using MarketPlace.Query.Contract.Site.SiteSlider;
+using MarketPlace.Query.Contract.Store;
 using MarketPlace.Query.Contract.Tickets;
 using MarketPlace.Query.Query.Site.SiteBanner;
 using MarketPlace.Query.Query.Site.SiteSlider;
+using MarketPlace.Query.Query.Store;
 using MarketPlace.Query.Query.Tickets;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -59,6 +65,13 @@ namespace MarketPlace.Infrastructure.Configuration
 
             #endregion
 
+            #region Store
+
+            services.AddTransient<IStoreRepository, StoreRepository>();
+            services.AddTransient<IStoreApplication, StoreApplication>();
+
+            #endregion
+
             #region Queries
 
             services.AddTransient<ISiteSliderQuery, SiteSliderQuery>();
@@ -66,6 +79,8 @@ namespace MarketPlace.Infrastructure.Configuration
             services.AddTransient<ISiteBannerQuery, SiteBannerQuery>();
 
             services.AddTransient<ITicketQuery, TicketQuery>();
+
+            services.AddTransient<IStoreQuery, StoreQuery>();
             #endregion
         }
     }

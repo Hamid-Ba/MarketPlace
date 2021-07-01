@@ -17,6 +17,7 @@ namespace MarketPlace.Infrastructure.EfCore.Mapping.Account
             builder.Property(p => p.LastName).HasMaxLength(125).IsRequired();
             builder.Property(p => p.Mobile).HasMaxLength(11).IsRequired();
             builder.Property(p => p.MobileActivateCode).HasMaxLength(200);
+            
         }
     }
 }
