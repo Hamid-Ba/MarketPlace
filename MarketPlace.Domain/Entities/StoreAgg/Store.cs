@@ -29,10 +29,9 @@ namespace MarketPlace.Domain.Entities.StoreAgg
             StoreGivenStatusReason = "";
         }
 
-        public void Edit(long userId, string name, string phoneNumber, string mobileNumber, string adminDescription, string description, string address,
+        public void Edit(string name, string phoneNumber, string mobileNumber, string adminDescription, string description, string address,
             string storeGivenStatusReason)
         {
-            UserId = userId;
             Name = name;
             PhoneNumber = phoneNumber;
             MobileNumber = mobileNumber;

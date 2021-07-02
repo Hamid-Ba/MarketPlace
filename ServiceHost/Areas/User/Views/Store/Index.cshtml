@@ -72,7 +72,9 @@
 
                                                 <td>@entity.SentRequestTime</td>
 
-                                                <td><a class="view">مشاهده</a></td>
+                                                <td>
+                                                    <a class="view fa fa-edit" asp-action="Edit" asp-route-id="@entity.Id"></a>
+                                                </td>
                                             </tr>
                                         }
                                     </tbody>

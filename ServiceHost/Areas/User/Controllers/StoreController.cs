@@ -5,7 +5,6 @@ using MarketPlace.ApplicationContract.AI.Account;
 using MarketPlace.ApplicationContract.AI.StoreAgg;
 using MarketPlace.ApplicationContract.ViewModels.StoreAgg;
 using MarketPlace.Query.Contract.Store;
-using Microsoft.AspNetCore.Identity;
 
 namespace ServiceHost.Areas.User.Controllers
 {
@@ -65,5 +64,42 @@ namespace ServiceHost.Areas.User.Controllers
             TempData[ErrorMessage] = "کاربر گرامی حساب شما مسدود شده است";
             return RedirectToAction("Dashboard", "Home", new { area = "User" });
         }
+
+        [HttpGet("edit-request/{id}")]
+        public async Task<IActionResult> Edit(long id)
+        {
+            var store = await _storeApplication.GetDetailForEditBy(id, User.GetUserId());
+
+            if (store is null)
+            {
+                TempData[ErrorMessage] = "شما حق دسترسی به دیگر اطلاعات را ندارید";
+                return RedirectToAction("Index");
+            }
+
+            return View(store);
+        }
+
+        [HttpPost("edit-request/{id}"), ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(EditStoreRequestVM command)
+        {
+            command.UserId = User.GetUserId();
+
+            if (ModelState.IsValid)
+            {
+                var result = await _storeApplication.Edit(command);
+
+                if (result.IsSucceeded)
+                {
+                    TempData[SuccessMessage] = result.Message;
+                    TempData[InfoMessage] = "وضعیت فروشگاه در حال بررسی هست";
+                    return RedirectToAction("Index");
+                }
+
+                TempData[ErrorMessage] = result.Message;
+            }
+
+            return View(command);
+        }
+
     }
 }

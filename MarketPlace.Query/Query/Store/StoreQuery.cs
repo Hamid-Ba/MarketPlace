@@ -17,6 +17,7 @@ namespace MarketPlace.Query.Query.Store
         public async Task<IEnumerable<StoreQueryVM>> GetUserStoresRequestsBy(long userId) => await _context.Stores.Where(s => s.UserId == userId)
             .Select(r => new StoreQueryVM()
             {
+                Id = r.Id,
                 UserId = r.UserId,
                 Status = r.Status,
                 Name = r.Name,

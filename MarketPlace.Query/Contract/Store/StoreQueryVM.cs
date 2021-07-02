@@ -4,6 +4,7 @@ namespace MarketPlace.Query.Contract.Store
 {
    public class StoreQueryVM
     {
+        public long Id { get; set; }
         public long UserId { get;  set; }
         public string Name { get;  set; }
         public string PhoneNumber { get;  set; }
