@@ -49,4 +49,24 @@ namespace MarketPlace.ApplicationContract.ViewModels.StoreAgg
         [MaxLength(500, ErrorMessage = "حداکثر تعداد کاراکتر مجاز {1} می باشد")]
         public string Address { get; set; }
     }
+
+    public class AdminStoreRequestVM
+    {
+        public long Id { get; set; }
+        public long UserId { get; set; }
+        public string UserFullName { get; set; }
+        public string StoreName { get; set; }
+        public string MobileNumber { get; set; }
+        public string CreationDate { get; set; }
+        public StoreStatus Status { get; set; }
+    }
+
+    public class DissConfrimStoreRequestVM
+    {
+        public long Id { get; set; }
+        public StoreStatus Status { get; set; }
+        
+        [Display(Name = "دلیل")]
+        public string StoreGivenStatusReason { get; set; }
+    }
 }

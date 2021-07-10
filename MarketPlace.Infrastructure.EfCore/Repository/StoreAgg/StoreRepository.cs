@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Framework.Application;
 using Framework.Infrastructure;
 using MarketPlace.ApplicationContract.ViewModels.StoreAgg;
 using MarketPlace.Domain.Entities.StoreAgg;
@@ -24,5 +26,18 @@ namespace MarketPlace.Infrastructure.EfCore.Repository.StoreAgg
                 MobileNumber = s.MobileNumber,
                 Address = s.Address
             }).FirstOrDefaultAsync(s => s.Id == id);
+
+        public async Task<IEnumerable<AdminStoreRequestVM>> GetAllForAdmin() => await _context.Stores
+            .Include(u => u.User)
+            .Select(s => new AdminStoreRequestVM()
+            {
+                Id = s.Id,
+                UserId = s.UserId,
+                UserFullName = $"{s.User.FirstName} {s.User.LastName}",
+                MobileNumber = s.MobileNumber,
+                Status = s.Status,
+                CreationDate = s.CreationDate.ToFarsi(),
+                StoreName = s.Name
+            }).AsNoTracking().ToListAsync();
     }
 }

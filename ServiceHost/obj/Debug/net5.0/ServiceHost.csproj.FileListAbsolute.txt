@@ -189,3 +189,15 @@ C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\S
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\User\Views\Store\SendRequest.cshtml.g.cs
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\User\Views\Store\Index.cshtml.g.cs
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\User\Views\Store\Edit.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\_AdminLayout.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\_FooterReferencePV.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\_HeadingReferencePV .cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\_MenuSideBarPV.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\_SiteMessage.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Admin\Views\_ViewImports.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Admin\Views\Home\Index.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Admin\Views\Store\Confirm.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Admin\Views\Store\ListOfRequests.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Admin\Views\Store\DissConfirm.cshtml.g.cs

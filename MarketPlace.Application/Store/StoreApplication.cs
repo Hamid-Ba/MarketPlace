@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Framework.Application;
 using MarketPlace.ApplicationContract.AI.StoreAgg;
 using MarketPlace.ApplicationContract.ViewModels.StoreAgg;
@@ -44,7 +45,7 @@ namespace MarketPlace.Application.Store
                 return result.Failed(ApplicationMessage.DuplicatedModel);
 
             store.Edit(command.Name, "", command.MobileNumber, "", "", command.Address, "");
-            store.ChangeStatus(StoreStatus.UnderProgressed);
+            store.ChangeStatus(StoreStatus.UnderProgressed,"در حال بررسی");
 
             await _storeRepository.SaveChangesAsync();
 
@@ -56,6 +57,34 @@ namespace MarketPlace.Application.Store
             if (_storeRepository.Exists(s => s.Id == id && s.UserId != userId))
                 return null;
             return await _storeRepository.GetDetailForEditBy(id);
+        }
+
+        public async Task<IEnumerable<AdminStoreRequestVM>> GetAllForAdmin() => await _storeRepository.GetAllForAdmin();
+        
+        public async Task<OperationResult> ConfirmStoreRequestBy(long id)
+        {
+            OperationResult result = new();
+
+            var store = await _storeRepository.GetEntityByIdAsync(id);
+            if (store is null) return result.Failed(ApplicationMessage.NotExist);
+
+            store.ChangeStatus(StoreStatus.Confirmed,"تایید شده");
+            await _storeRepository.SaveChangesAsync();
+
+            return result.Succeeded();
+        }
+
+        public async Task<OperationResult> DissConfirmStoreRequestBy(DissConfrimStoreRequestVM command)
+        {
+            OperationResult result = new();
+
+            var store = await _storeRepository.GetEntityByIdAsync(command.Id);
+            if (store is null) return result.Failed(ApplicationMessage.NotExist);
+
+            store.ChangeStatus(command.Status, command.StoreGivenStatusReason);
+            await _storeRepository.SaveChangesAsync();
+
+            return result.Succeeded();
         }
     }
 }

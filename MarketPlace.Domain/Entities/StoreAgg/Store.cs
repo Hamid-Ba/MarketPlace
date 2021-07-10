@@ -42,9 +42,12 @@ namespace MarketPlace.Domain.Entities.StoreAgg
             LastUpdateDate = DateTime.Now;
         }
 
-        public void ChangeStatus(StoreStatus status)
+        public void ChangeStatus(StoreStatus status, string reason)
         {
             Status = status;
+
+            if (!string.IsNullOrWhiteSpace(reason)) StoreGivenStatusReason = reason;
+
             LastUpdateDate = DateTime.Now;
         }
 
