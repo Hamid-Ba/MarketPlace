@@ -39,5 +39,8 @@ namespace MarketPlace.Infrastructure.EfCore.Repository.StoreAgg
                 CreationDate = s.CreationDate.ToFarsi(),
                 StoreName = s.Name
             }).AsNoTracking().ToListAsync();
+
+        public async Task<bool> IsStoreBelongToUser(long id, long userId) => await _context.Stores.AnyAsync(s => s.Id == id && s.UserId == userId && s.Status == StoreStatus.Confirmed);
+
     }
 }

@@ -10,5 +10,6 @@ namespace MarketPlace.Domain.RI.StoreAgg
     {
         Task<EditStoreRequestVM> GetDetailForEditBy(long id);
         Task<IEnumerable<AdminStoreRequestVM>> GetAllForAdmin();
+        Task<bool> IsStoreBelongToUser(long id, long userId);
     }
 }

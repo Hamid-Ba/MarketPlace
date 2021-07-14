@@ -201,3 +201,8 @@ C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\S
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Admin\Views\Store\Confirm.cshtml.g.cs
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Admin\Views\Store\ListOfRequests.cshtml.g.cs
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Admin\Views\Store\DissConfirm.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Store\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Store\Views\_ViewImports.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Store\Views\_ViewStart.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Store\Views\Home\Index.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Store\Views\Shared\_StoreAccountSideBarVM.cshtml.g.cs

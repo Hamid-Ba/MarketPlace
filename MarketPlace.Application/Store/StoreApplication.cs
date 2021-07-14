@@ -4,6 +4,7 @@ using Framework.Application;
 using MarketPlace.ApplicationContract.AI.StoreAgg;
 using MarketPlace.ApplicationContract.ViewModels.StoreAgg;
 using MarketPlace.Domain.RI.StoreAgg;
+using OperationResult = Framework.Application.OperationResult;
 
 namespace MarketPlace.Application.Store
 {
@@ -85,6 +86,16 @@ namespace MarketPlace.Application.Store
             await _storeRepository.SaveChangesAsync();
 
             return result.Succeeded();
+        }
+
+        public async Task<OperationResult> IsStoreBelongToUser(long id, long userId)
+        {
+            OperationResult result = new();
+
+            if (!await _storeRepository.IsStoreBelongToUser(id, userId))
+                return result.Failed("شما به فروشگاه دیگران دسترسی ندارید");
+
+            return result.Succeeded("با موفقیت وارد شدید");
         }
     }
 }

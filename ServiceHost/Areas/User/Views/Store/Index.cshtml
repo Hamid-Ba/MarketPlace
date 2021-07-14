@@ -52,7 +52,17 @@
                                         @foreach (var entity in Model)
                                         {
                                             <tr>
-                                                <td>@entity.Name</td>
+                                                <td>
+                                                    @if (entity.Status == StoreStatus.Confirmed)
+                                                    {
+                                                        <a asp-area="Store" asp-controller="Home" asp-action="Index" asp-route-id="@entity.Id" class="badge badge-primary">@entity.Name</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        @entity.Name
+                                                    }
+
+                                                </td>
                                                 <td>
                                                     @switch (entity.Status)
                                                     {

@@ -13,6 +13,6 @@ namespace MarketPlace.ApplicationContract.AI.StoreAgg
        Task<IEnumerable<AdminStoreRequestVM>> GetAllForAdmin();
        Task<OperationResult> ConfirmStoreRequestBy(long id);
        Task<OperationResult> DissConfirmStoreRequestBy(DissConfrimStoreRequestVM command);
-
+       Task<OperationResult> IsStoreBelongToUser(long id, long userId);
    }
 }
