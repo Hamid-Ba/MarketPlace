@@ -14,10 +14,8 @@ namespace ServiceHost.Areas.Store.Controllers
         public async Task<IActionResult> Index(long id)
         {
             var result = await _storeApplication.IsStoreBelongToUser(id, User.GetUserId());
-            if (result.IsSucceeded)
-            {
-                return View();
-            }
+
+            if (result.IsSucceeded) return View();
 
             TempData[ErrorMessage] = result.Message;
             return RedirectToAction("Dashboard", "Home", new { area = "User" });

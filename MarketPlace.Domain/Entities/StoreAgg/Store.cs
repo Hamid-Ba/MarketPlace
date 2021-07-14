@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using Framework.Application;
 using Framework.Domain;
 using MarketPlace.Domain.Entities.Account;
+using MarketPlace.Domain.Entities.StoreAgg.ProductAgg;
 
 namespace MarketPlace.Domain.Entities.StoreAgg
 {
@@ -18,6 +20,7 @@ namespace MarketPlace.Domain.Entities.StoreAgg
         public string StoreGivenStatusReason { get; set; }
 
         public User User { get; private set; }
+        public List<Product> Products { get; private set; }
 
         public Store(long userId, string name, string mobileNumber, StoreStatus status, string address)
         {

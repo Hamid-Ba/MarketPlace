@@ -2,6 +2,7 @@
 using MarketPlace.Domain.Entities.Account;
 using MarketPlace.Domain.Entities.Site;
 using MarketPlace.Domain.Entities.StoreAgg;
+using MarketPlace.Domain.Entities.StoreAgg.ProductAgg;
 using MarketPlace.Domain.Entities.Tickets;
 using MarketPlace.Infrastructure.EfCore.Mapping.Account;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,9 @@ namespace MarketPlace.Infrastructure.EfCore.Context
             modelBuilder.Entity<SiteBanner>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Ticket>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Store>().HasQueryFilter(q => !q.IsDelete);
+            modelBuilder.Entity<Product>().HasQueryFilter(q => !q.IsDelete);
+            modelBuilder.Entity<Category>().HasQueryFilter(q => !q.IsDelete);
+            modelBuilder.Entity<Product_Category>().HasQueryFilter(q => !q.IsDelete);
         }
 
         #region Account
@@ -51,6 +55,14 @@ namespace MarketPlace.Infrastructure.EfCore.Context
         #region Store
 
         public DbSet<Store> Stores { get; set; }
+
+        #region Products
+
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Product_Category> ProductCategories { get; set; }
+
+        #endregion
 
         #endregion
 
