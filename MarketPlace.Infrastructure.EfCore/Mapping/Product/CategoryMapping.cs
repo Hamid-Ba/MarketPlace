@@ -12,6 +12,8 @@ namespace MarketPlace.Infrastructure.EfCore.Mapping.Product
 
             builder.Property(p => p.Name).HasMaxLength(85).IsRequired();
 
+            builder.HasMany(c => c.SubCategories).WithOne(c => c.Parent).HasForeignKey(f => f.ParentId);
+
             builder.HasMany(c => c.Products)
                 .WithOne(p => p.Category)
                 .HasForeignKey(f => f.CategoryId);

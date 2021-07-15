@@ -233,9 +233,6 @@ namespace MarketPlace.Infrastructure.EfCore.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long?>("CategoryId")
-                        .HasColumnType("bigint");
-
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
@@ -261,7 +258,7 @@ namespace MarketPlace.Infrastructure.EfCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("ParentId");
 
                     b.ToTable("Categories");
                 });
@@ -471,10 +468,12 @@ namespace MarketPlace.Infrastructure.EfCore.Migrations
 
             modelBuilder.Entity("MarketPlace.Domain.Entities.StoreAgg.ProductAgg.Category", b =>
                 {
-                    b.HasOne("MarketPlace.Domain.Entities.StoreAgg.ProductAgg.Category", null)
-                        .WithMany("Categories")
-                        .HasForeignKey("CategoryId")
+                    b.HasOne("MarketPlace.Domain.Entities.StoreAgg.ProductAgg.Category", "Parent")
+                        .WithMany("SubCategories")
+                        .HasForeignKey("ParentId")
                         .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Parent");
                 });
 
             modelBuilder.Entity("MarketPlace.Domain.Entities.StoreAgg.ProductAgg.Product", b =>
@@ -572,9 +571,9 @@ namespace MarketPlace.Infrastructure.EfCore.Migrations
 
             modelBuilder.Entity("MarketPlace.Domain.Entities.StoreAgg.ProductAgg.Category", b =>
                 {
-                    b.Navigation("Categories");
-
                     b.Navigation("Products");
+
+                    b.Navigation("SubCategories");
                 });
 
             modelBuilder.Entity("MarketPlace.Domain.Entities.StoreAgg.ProductAgg.Product", b =>
