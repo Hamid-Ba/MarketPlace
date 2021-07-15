@@ -1,20 +1,22 @@
 ﻿@model IEnumerable<MarketPlace.Query.Contract.Category.CategoryQueryVM>
 
-<ul>
-    @if (Model.Any())
+
+@if (Model.Any())
+{
+    @foreach (var sub in Model)
     {
-        @foreach (var item in Model)
-        {
 
-            <li>
-                <input type="checkbox" name="CategoriesId" value="@item.Id" /> @item.Name
+        <label>
+            <input type="checkbox" name="CategoriesId" value="@sub.Id" main_category_checkbox="@sub.Id" parent-category-id="@sub.ParentId" /> @sub.Name
+        </label>
 
-                @if (item.Categories != null)
-                {
-                    <partial name="_SubCategory" model="@item.Categories" />
-                }
-            </li>
+        <div id="sub_categories_@sub.Id" style="display: none">
+            @if (sub.Categories != null)
+            {
 
-        }
+                <partial name="_SubCategory" model="@sub.Categories" />
+
+            }
+        </div>
     }
-</ul>
+}

@@ -69,19 +69,23 @@
                                             <hr />
 
                                             <label>دسته بندی</label>
-                                            <div class="card-body">
-                                                <ul id="category" class="demo1">
-                                                    @foreach (var item in categories)
-                                                    {
-                                                        <li>
-                                                            <input type="checkbox"  name="CategoriesId" value="@item.Id" /> @item.Name
-                                                            
-                                                             <partial name="_SubCategory" model="@item.Categories"/>
-                                                        </li>
-                                                    }
-                                                </ul>
 
-                                            </div>
+                                            <ul>
+                                                @foreach (var category in categories)
+                                                {
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox" name="CategoriesId" value="@category.Id" main_category_checkbox="@category.Id" /> @category.Name
+                                                        </label>
+
+                                                        <div id="sub_categories_@category.Id" style="display: none">
+                                                            <partial name="_SubCategory" model="@category.Categories" />
+                                                        </div>
+                                                    </li>
+                                                }
+                                            </ul>
+
+
 
                                             <div class="save_button primary_btn default_button">
                                                 <button type="submit">ارسال برای تایید</button>
@@ -97,3 +101,26 @@
         </div>
     </div>
 </section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $("[main_category_checkbox]").on('change',
+            function (e) {
+                var isChecked = $(this).is(':checked');
+                var selectedCategoryId = $(this).attr('main_category_checkbox');
+
+                if (isChecked) {
+                    $('#sub_categories_' + selectedCategoryId).slideDown(300);
+                } else {
+                    $('#sub_categories_' + selectedCategoryId).slideUp(300);
+                    $('[parent-category-id="' + selectedCategoryId + '"]').prop('checked', false);
+
+
+                    var subCategoryId = $('[parent-category-id="' + selectedCategoryId + '"]').attr('main_category_checkbox');
+                    $('#sub_categories_' + subCategoryId).slideUp(300);
+                    $('[parent-category-id="' + subCategoryId + '"]').prop('checked', false);
+                }
+            });
+    </script>
+}

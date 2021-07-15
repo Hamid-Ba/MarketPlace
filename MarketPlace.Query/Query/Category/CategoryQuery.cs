@@ -32,6 +32,7 @@ namespace MarketPlace.Query.Query.Category
                 Select(c => new CategoryQueryVM()
                 {
                     Id = c.Id,
+                    ParentId = c.ParentId,
                     Name = c.Name,
                     Categories = MapCategories(c.SubCategories)
                 }).ToList();
