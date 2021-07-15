@@ -15,10 +15,12 @@ using MarketPlace.Infrastructure.EfCore.Repository.Account;
 using MarketPlace.Infrastructure.EfCore.Repository.Site;
 using MarketPlace.Infrastructure.EfCore.Repository.StoreAgg;
 using MarketPlace.Infrastructure.EfCore.Repository.Tickets;
+using MarketPlace.Query.Contract.Product;
 using MarketPlace.Query.Contract.Site.SiteBanner;
 using MarketPlace.Query.Contract.Site.SiteSlider;
 using MarketPlace.Query.Contract.Store;
 using MarketPlace.Query.Contract.Tickets;
+using MarketPlace.Query.Query.Product;
 using MarketPlace.Query.Query.Site.SiteBanner;
 using MarketPlace.Query.Query.Site.SiteSlider;
 using MarketPlace.Query.Query.Store;
@@ -81,6 +83,8 @@ namespace MarketPlace.Infrastructure.Configuration
             services.AddTransient<ITicketQuery, TicketQuery>();
 
             services.AddTransient<IStoreQuery, StoreQuery>();
+            
+            services.AddTransient<IProductQuery, ProductQuery>();
             #endregion
         }
     }

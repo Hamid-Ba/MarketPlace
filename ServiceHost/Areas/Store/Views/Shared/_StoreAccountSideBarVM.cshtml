@@ -1,7 +1,9 @@
-﻿<div class="dashboard_tab_button">
+﻿@model long
+
+<div class="dashboard_tab_button">
     <ul role="tablist" class="nav flex-column dashboard-list">
         <li><a asp-controller="Home" asp-action="Dashboard" asp-area="Store" class="nav-link active">داشبورد</a></li>
-        <li> <a asp-controller="Product" asp-action="Index" asp-area="Store" class="nav-link">محصولات</a></li>
+        <li> <a asp-controller="Product" asp-action="Products" asp-area="Store" asp-route-id="@Model" class="nav-link">محصولات</a></li>
         <li><a asp-controller="Account" asp-action="Logout" asp-area="" class="nav-link">خروج</a></li>
     </ul>
 </div>

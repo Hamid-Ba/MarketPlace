@@ -15,6 +15,7 @@ namespace ServiceHost.Areas.Store.Controllers
         {
             var result = await _storeApplication.IsStoreBelongToUser(id, User.GetUserId());
 
+            ViewBag.StoreId = id;
             if (result.IsSucceeded) return View();
 
             TempData[ErrorMessage] = result.Message;

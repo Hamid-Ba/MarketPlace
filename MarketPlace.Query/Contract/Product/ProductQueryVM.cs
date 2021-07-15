@@ -14,5 +14,6 @@ namespace MarketPlace.Query.Contract.Product
         public string ProductAcceptOrRejectDescription { get;  set; }
         public bool IsActive { get;  set; }
         public ProductAcceptanceState ProductAcceptanceState { get;  set; }
+        public string CreationDate { get; set; }
     }
 }
