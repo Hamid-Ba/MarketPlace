@@ -1,19 +1,27 @@
 ﻿using MarketPlace.Application.Account;
+using MarketPlace.Application.Category;
+using MarketPlace.Application.Product;
+using MarketPlace.Application.ProductCategory;
 using MarketPlace.Application.Site;
 using MarketPlace.Application.Store;
 using MarketPlace.Application.Tickets;
 using MarketPlace.ApplicationContract.AI.Account;
+using MarketPlace.ApplicationContract.AI.CategoryAgg;
+using MarketPlace.ApplicationContract.AI.ProductAgg;
+using MarketPlace.ApplicationContract.AI.ProductCategoryAgg;
 using MarketPlace.ApplicationContract.AI.Site;
 using MarketPlace.ApplicationContract.AI.StoreAgg;
 using MarketPlace.ApplicationContract.AI.Tickets;
 using MarketPlace.Domain.RI.Account;
 using MarketPlace.Domain.RI.Site;
 using MarketPlace.Domain.RI.StoreAgg;
+using MarketPlace.Domain.RI.StoreAgg.ProductAgg;
 using MarketPlace.Domain.RI.Tickets;
 using MarketPlace.Infrastructure.EfCore.Context;
 using MarketPlace.Infrastructure.EfCore.Repository.Account;
 using MarketPlace.Infrastructure.EfCore.Repository.Site;
 using MarketPlace.Infrastructure.EfCore.Repository.StoreAgg;
+using MarketPlace.Infrastructure.EfCore.Repository.StoreAgg.ProductAgg;
 using MarketPlace.Infrastructure.EfCore.Repository.Tickets;
 using MarketPlace.Query.Contract.Category;
 using MarketPlace.Query.Contract.Product;
@@ -74,6 +82,15 @@ namespace MarketPlace.Infrastructure.Configuration
             services.AddTransient<IStoreRepository, StoreRepository>();
             services.AddTransient<IStoreApplication, StoreApplication>();
 
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductApplication, ProductApplication>();
+
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<ICategoryApplication, CategoryApplication>();
+
+
+            services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
+            services.AddTransient<IProductCategoryApplication, ProductCategoryApplication>();
             #endregion
 
             #region Queries
@@ -85,9 +102,9 @@ namespace MarketPlace.Infrastructure.Configuration
             services.AddTransient<ITicketQuery, TicketQuery>();
 
             services.AddTransient<IStoreQuery, StoreQuery>();
-            
+
             services.AddTransient<IProductQuery, ProductQuery>();
-            
+
             services.AddTransient<ICategoryQuery, CategoryQuery>();
             #endregion
         }

@@ -47,7 +47,7 @@
                                             <br>
 
                                             <label>تصویر</label> <span asp-validation-for="ImageFile" class="text-danger float-right"></span>
-                                            <input asp-for="ImageFile" type="file" accept="jpeg,png,jpg">
+                                            <input asp-for="ImageFile" type="file">
                                             <br>
 
                                             <label>قیمت</label> <span asp-validation-for="Price" class="text-danger float-right"></span>
@@ -74,9 +74,11 @@
                                                 @foreach (var category in categories)
                                                 {
                                                     <li>
+
                                                         <label>
                                                             <input type="checkbox" name="CategoriesId" value="@category.Id" main_category_checkbox="@category.Id" /> @category.Name
                                                         </label>
+
 
                                                         <div id="sub_categories_@category.Id" style="display: none">
                                                             <partial name="_SubCategory" model="@category.Categories" />
@@ -88,6 +90,7 @@
 
 
                                             <div class="save_button primary_btn default_button">
+                                                <input type="hidden" asp-for="StoreId" value="@ViewBag.StoreId" />
                                                 <button type="submit">ارسال برای تایید</button>
                                             </div>
                                         </form>

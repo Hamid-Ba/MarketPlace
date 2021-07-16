@@ -18,7 +18,6 @@ namespace MarketPlace.ApplicationContract.ViewModels.ProductAgg
 
         [Display(Name = "تصویر محصول")]
         [Required(ErrorMessage = ValidationMessage.IsRequired)]
-        [MaxLength(300, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
         public IFormFile ImageFile { get; set; }
 
         [Display(Name = "قیمت محصول")]
