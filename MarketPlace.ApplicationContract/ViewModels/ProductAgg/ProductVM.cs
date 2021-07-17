@@ -36,4 +36,20 @@ namespace MarketPlace.ApplicationContract.ViewModels.ProductAgg
         [Display(Name = "فعال / غیرفعال")]
         public bool IsActive { get; set; }
     }
+
+    public class EditProductVM : CreateProductVM
+    {
+        public long Id { get; set; }
+    }
+
+    public class AdminProductVM
+    {
+        public long Id { get; set; }
+        public string StoreName { get; set; }
+        public string OwnerName { get; set; }
+        public string Title { get; set; }
+        public string[] CategoriesName { get; set; }
+        public double Price { get; set; }
+        public ProductAcceptanceState State { get; set; }
+    }
 }

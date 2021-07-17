@@ -30,5 +30,26 @@ namespace MarketPlace.Application.ProductCategory
             }
             catch { return result.Failed(ApplicationMessage.GoesWrong); }
         }
+
+        public async Task<OperationResult> EditProductCategories(long productId, long[] categoriesId)
+        {
+            OperationResult result = new();
+
+            try
+            {
+                var productCategories = await _productCategoryRepository.GetProductCategoriesBy(productId);
+                _productCategoryRepository.DeleteRangeOfEntities(productCategories);
+
+                List<Product_Category> newProductCategories = new();
+                foreach (var catId in categoriesId)
+                    newProductCategories.Add(new Product_Category(productId, catId));
+
+                await _productCategoryRepository.AddRangeOfEntitiesAsync(newProductCategories);
+                await _productCategoryRepository.SaveChangesAsync();
+
+                return result.Succeeded();
+            }
+            catch { return result.Failed(ApplicationMessage.GoesWrong); }
+        }
     }
 }

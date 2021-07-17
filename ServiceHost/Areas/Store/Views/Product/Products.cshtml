@@ -57,9 +57,9 @@
                                         {
                                             <tr>
                                                 <td>
-                                                    <img src="/img/@entity.ImageName" style="border-radius: 50px; width: 50%" alt="Alternate Text"/>
+                                                    <img src="/img/@entity.ImageName" style="border-radius: 50px; width: 50%" alt="Alternate Text" />
                                                 </td>
-                                                
+
                                                 <td>@entity.Title</td>
                                                 <td>@entity.Price.ToMoney()</td>
                                                 <td>
@@ -86,6 +86,15 @@
                                                         case false:
                                                             <span class="badge badge-danger">غیر فعال</span>
                                                             break;
+                                                    }
+
+                                                    @if (entity.ProductAcceptanceState != ProductAcceptanceState.UnderProgress)
+                                                    {
+                                                        <hr />
+
+                                                        <p class="@((entity.ProductAcceptanceState == ProductAcceptanceState.Accepted) ? "text-success" : "text-danger") ">
+                                                            @entity.ProductAcceptOrRejectDescription
+                                                        </p>
                                                     }
                                                 </td>
 

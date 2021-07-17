@@ -24,7 +24,8 @@ namespace MarketPlace.Query.Query.Product
                 Price = p.Price,
                 ProductAcceptanceState = p.ProductAcceptanceState,
                 StoreId = p.StoreId,
-                CreationDate = p.CreationDate.ToFarsi()
+                CreationDate = p.CreationDate.ToFarsi(),
+                ProductAcceptOrRejectDescription = p.ProductAcceptOrRejectDescription
 
             }).AsNoTracking().ToListAsync();
 

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Framework.Application;
 using MarketPlace.ApplicationContract.AI.ProductAgg;
 using MarketPlace.ApplicationContract.AI.ProductCategoryAgg;
@@ -36,6 +37,40 @@ namespace MarketPlace.Application.Product
             await _productRepository.SaveChangesAsync();
 
             return await _productCategoryApplication.AddCategoriesToProduct(product.Id, command.CategoriesId);
+        }
+
+        public async Task<OperationResult> Edit(EditProductVM command)
+        {
+            OperationResult result = new();
+
+            var product = await _productRepository.GetEntityByIdAsync(command.Id);
+            if (product is null) return result.Failed(ApplicationMessage.NotExist);
+
+            if (string.IsNullOrWhiteSpace(command.Description)) return result.Failed("توضیحات اصلی را پر کنید");
+
+            var path = $"Products/{command.StoreId}";
+            var imageName = Uploader.ImageUploader(command.ImageFile, path, product.ImageName);
+
+            product.Edit(command.Title, imageName, command.Price, command.ShortDescription, command.Description, command.IsActive);
+
+            return await _productCategoryApplication.EditProductCategories(product.Id, command.CategoriesId);
+        }
+
+        public async Task<EditProductVM> GetDetailForEditBy(long id) => await _productRepository.GetDetailForEditBy(id);
+
+        public async Task<IEnumerable<AdminProductVM>> GetAllForAdmin() => await _productRepository.GetAllForAdmin();
+
+        public async Task<OperationResult> ConfirmOrDissConfirm(long id, bool isConfirm, string reason)
+        {
+            OperationResult result = new();
+
+            var product = await _productRepository.GetEntityByIdAsync(id);
+            if (product is null) return result.Failed(ApplicationMessage.NotExist);
+
+            product.SetProductState(isConfirm ? ProductAcceptanceState.Accepted : ProductAcceptanceState.Rejected, reason);
+            await _productRepository.SaveChangesAsync();
+
+            return result.Succeeded();
         }
     }
 }

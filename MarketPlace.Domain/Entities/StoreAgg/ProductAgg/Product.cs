@@ -20,7 +20,7 @@ namespace MarketPlace.Domain.Entities.StoreAgg.ProductAgg
         public Store Store { get; private set; }
         public List<Product_Category> Categories { get; private set; }
 
-        public Product(long storeId, string title, string imageName, double price, string shortDescription, string description, 
+        public Product(long storeId, string title, string imageName, double price, string shortDescription, string description,
             string productAcceptOrRejectDescription, bool isActive, ProductAcceptanceState productAcceptanceState)
         {
             StoreId = storeId;
@@ -37,11 +37,22 @@ namespace MarketPlace.Domain.Entities.StoreAgg.ProductAgg
         public void Edit(string title, string imageName, double price, string shortDescription, string description, bool isActive)
         {
             Title = title;
-            ImageName = imageName;
+
+            if (!string.IsNullOrWhiteSpace(imageName))
+                ImageName = imageName;
+
             Price = price;
             ShortDescription = shortDescription;
             Description = description;
             IsActive = isActive;
+
+            LastUpdateDate = DateTime.Now;
+        }
+
+        public void SetProductState(ProductAcceptanceState state, string reason)
+        {
+            ProductAcceptanceState = state;
+            ProductAcceptOrRejectDescription = reason;
 
             LastUpdateDate = DateTime.Now;
         }
@@ -51,5 +62,7 @@ namespace MarketPlace.Domain.Entities.StoreAgg.ProductAgg
             IsDelete = true;
             DeletionDate = DateTime.Now;
         }
+
+
     }
 }
