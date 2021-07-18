@@ -17,7 +17,6 @@ namespace MarketPlace.ApplicationContract.ViewModels.ProductAgg
         public long[] CategoriesId { get; set; }
 
         [Display(Name = "تصویر محصول")]
-        [Required(ErrorMessage = ValidationMessage.IsRequired)]
         public IFormFile ImageFile { get; set; }
 
         [Display(Name = "قیمت محصول")]

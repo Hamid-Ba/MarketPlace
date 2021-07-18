@@ -75,5 +75,47 @@ namespace ServiceHost.Areas.Store.Controllers
             ViewBag.Categories = await _categoryQuery.GetForAddProduct();
             return View("Create", command);
         }
+
+        public async Task<IActionResult> Edit(long id)
+        {
+            var product = await _productApplication.GetDetailForEditBy(id);
+
+            var result = await _storeApplication.IsStoreBelongToUser(product.StoreId, User.GetUserId());
+
+            ViewBag.Categories = await _categoryQuery.GetForAddProduct();
+
+            if (result.IsSucceeded) return View(product);
+
+            TempData[ErrorMessage] = result.Message;
+            return RedirectToAction("Dashboard", "Home", new { area = "User" });
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(EditProductVM command)
+        {
+            var check = await _storeApplication.IsStoreBelongToUser(command.StoreId, User.GetUserId());
+
+            if (!check.IsSucceeded)
+            {
+                TempData[ErrorMessage] = check.Message;
+                return RedirectToAction("Dashboard", "Home", new { area = "User" });
+            }
+
+            if (ModelState.IsValid)
+            {
+                var result = await _productApplication.Edit(command);
+
+                if (result.IsSucceeded)
+                {
+                    TempData[SuccessMessage] = result.Message;
+                    return RedirectToAction("Products", new { id = command.StoreId });
+                }
+
+                TempData[ErrorMessage] = result.Message;
+            }
+
+            ViewBag.Categories = await _categoryQuery.GetForAddProduct();
+            return View("Edit", command);
+        }
     }
 }

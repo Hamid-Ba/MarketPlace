@@ -1,0 +1,134 @@
+﻿@using MarketPlace.Query.Contract.Category
+@model MarketPlace.ApplicationContract.ViewModels.ProductAgg.EditProductVM
+@{
+    ViewData["Title"] = "ویرایش محصول";
+    var categories = ViewBag.Categories as IEnumerable<CategoryQueryVM>;
+}
+
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li>@ViewData["Title"]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    <!-- Nav tabs -->
+                    <partial name="_StoreAccountSideBarVM" model="@Model.StoreId" />
+                </div>
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+                        <div class="tab-pane fade show active" id="account-details">
+                            <h3>@ViewData["Title"]</h3>
+                            <div class="login">
+                                <div class="login_form_container">
+                                    <div class="account_login_form">
+                                        <form asp-controller="Product" asp-action="Edit" method="post" enctype="multipart/form-data">
+
+                                            <label>نام محصول</label> <span asp-validation-for="Title" class="text-danger float-right"></span>
+                                            <input asp-for="Title" type="text">
+                                            <br>
+
+                                            <label>تصویر</label> <span asp-validation-for="ImageFile" class="text-danger float-right"></span>
+                                            <input asp-for="ImageFile" type="file">
+                                            <br>
+
+                                            <label>قیمت</label> <span asp-validation-for="Price" class="text-danger float-right"></span>
+                                            <input asp-for="Price" type="number">
+                                            <br>
+
+                                            <label>توضیحات کوتاه</label> <span asp-validation-for="ShortDescription" class="text-danger float-right"></span>
+                                            <textarea asp-for="ShortDescription" rows="8" class="form-control"></textarea>
+                                            <br>
+
+                                            <label>توضیحات اصلی</label> <span asp-validation-for="Description" class="text-danger float-right"></span>
+                                            <textarea asp-for="Description" id="TinyArea" class="form-control"></textarea>
+                                            <br />
+
+                                            <label>فعال / غیر فعال</label>
+                                            <input asp-for="IsActive">
+                                            <br>
+
+                                            <hr />
+
+                                            <label>دسته بندی</label>
+
+                                            <ul>
+                                                @foreach (var category in categories)
+                                                {
+                                                    <li>
+
+                                                        <label>
+                                                            <input type="checkbox" name="CategoriesId" @((Model.CategoriesId != null && Model.CategoriesId.Any(c => c == category.Id)) ? "checked" : "")
+                                                                   value="@category.Id" main_category_checkbox="@category.Id" /> @category.Name
+                                                            </label>
+
+
+                                                            <div id="sub_categories_@category.Id" style="display:  @((Model.CategoriesId != null && Model.CategoriesId.Any(c => c == category.Id))? "" : "none")">
+                                                                @{
+                                                                    Tuple<List<CategoryQueryVM>, long[]> partialTuple = new Tuple<List<CategoryQueryVM>, long[]>
+                                                                        (category.Categories, Model.CategoriesId);
+                                                                }
+                                                                <partial name="_EditSubCategory" model="@partialTuple" />
+                                                            </div>
+                                                        </li>
+                                                    }
+                                            </ul>
+
+
+
+                                            <div class="save_button primary_btn default_button">
+                                                <input type="hidden" asp-for="Id" value="@Model.Id" />
+                                                <input type="hidden" asp-for="StoreId" value="@Model.StoreId" />
+                                                <button type="submit">ویرایش و ارسال برای تایید</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $("[main_category_checkbox]").on('change',
+            function (e) {
+                var isChecked = $(this).is(':checked');
+                var selectedCategoryId = $(this).attr('main_category_checkbox');
+
+                if (isChecked) {
+                    $('#sub_categories_' + selectedCategoryId).slideDown(300);
+                } else {
+                    $('#sub_categories_' + selectedCategoryId).slideUp(300);
+                    $('[parent-category-id="' + selectedCategoryId + '"]').prop('checked', false);
+
+
+                    var subCategoryId = $('[parent-category-id="' + selectedCategoryId + '"]').attr('main_category_checkbox');
+                    $('#sub_categories_' + subCategoryId).slideUp(300);
+                    $('[parent-category-id="' + subCategoryId + '"]').prop('checked', false);
+                }
+            });
+    </script>
+}
+

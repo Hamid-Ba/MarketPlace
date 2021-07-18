@@ -1,0 +1,29 @@
+﻿@using MarketPlace.Query.Contract.Category
+@model Tuple<List<MarketPlace.Query.Contract.Category.CategoryQueryVM>, long[]>
+
+@{
+    var productCategories = ViewData["Categories"] as long[];
+}
+
+@if (Model.Item1.Any())
+{
+    @foreach (var sub in Model.Item1)
+    {
+
+        <label>
+            <input type="checkbox" name="CategoriesId" value="@sub.Id" @((Model.Item2 != null && Model.Item2.Any(c => c == sub.Id)) ? "checked" : "")
+                   main_category_checkbox="@sub.Id" parent-category-id="@sub.ParentId" /> @sub.Name
+            </label>
+
+            <div id="sub_categories_@sub.Id" style="display: @((Model.Item2 != null && Model.Item2.Any(c => c == sub.Id))? "" : "none")">
+                @if (sub.Categories != null)
+                {
+                    Tuple<List<CategoryQueryVM>, long[]> partialTuple = new Tuple<List<CategoryQueryVM>, long[]>
+                        (sub.Categories, Model.Item2);
+
+                    <partial name="_EditSubCategory" model="@partialTuple" />
+
+                }
+            </div>
+        }
+}

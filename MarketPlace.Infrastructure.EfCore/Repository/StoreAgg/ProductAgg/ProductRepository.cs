@@ -42,5 +42,9 @@ namespace MarketPlace.Infrastructure.EfCore.Repository.StoreAgg.ProductAgg
                 State = p.ProductAcceptanceState,
                 CategoriesName = p.Categories.Where(c => c.ProductId == p.Id).Select(c => c.Category.Name).ToArray()
             }).AsNoTracking().ToListAsync();
+
+        public async Task<bool> IsProductBelongToStore(long id, long storeId) =>
+            await _context.Products.AnyAsync(p => p.Id == id && p.StoreId == storeId);
+
     }
 }

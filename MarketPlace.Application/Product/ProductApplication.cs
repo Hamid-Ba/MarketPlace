@@ -23,8 +23,10 @@ namespace MarketPlace.Application.Product
         {
             OperationResult result = new();
 
+            if (command.ImageFile is null) return result.Failed("تصویر محصول را آپلود کنید");
             if (!command.ImageFile.IsImage()) return result.Failed("عکس وارد کن دیوث");
             if (string.IsNullOrWhiteSpace(command.Description)) return result.Failed("توضیحات اصلی را پر کنید");
+            if (command.CategoriesId is null) return result.Failed("دسته بندی را انتخاب کنید");
 
             var path = $"Products/{command.StoreId}";
             var imageName = Uploader.ImageUploader(command.ImageFile, path, null!);
@@ -43,15 +45,23 @@ namespace MarketPlace.Application.Product
         {
             OperationResult result = new();
 
+            if (!await _productRepository.IsProductBelongToStore(command.Id, command.StoreId))
+                return result.Failed("شما دسترسی به محصول بقیه ندارید");
+
             var product = await _productRepository.GetEntityByIdAsync(command.Id);
             if (product is null) return result.Failed(ApplicationMessage.NotExist);
 
+            if (command.ImageFile != null)
+                if (!command.ImageFile.IsImage()) return result.Failed("عکس وارد کن دیوث");
+
             if (string.IsNullOrWhiteSpace(command.Description)) return result.Failed("توضیحات اصلی را پر کنید");
+            if (command.CategoriesId is null) return result.Failed("دسته بندی را انتخاب کنید");
 
             var path = $"Products/{command.StoreId}";
             var imageName = Uploader.ImageUploader(command.ImageFile, path, product.ImageName);
 
             product.Edit(command.Title, imageName, command.Price, command.ShortDescription, command.Description, command.IsActive);
+            product.SetProductState(ProductAcceptanceState.UnderProgress, "");
 
             return await _productCategoryApplication.EditProductCategories(product.Id, command.CategoriesId);
         }
