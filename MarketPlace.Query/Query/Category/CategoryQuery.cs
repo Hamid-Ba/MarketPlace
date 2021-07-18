@@ -13,7 +13,7 @@ namespace MarketPlace.Query.Query.Category
 
         public CategoryQuery(MarketPlaceContext context) => _context = context;
 
-        public async Task<IEnumerable<CategoryQueryVM>> GetForAddProduct()
+        public async Task<IEnumerable<CategoryQueryVM>> GetCategories()
         {
             var result = await _context.Categories.Include(c => c.SubCategories).ThenInclude(c => c.SubCategories)
                    .Where(c => c.ParentId == null).Select(c => new CategoryQueryVM()

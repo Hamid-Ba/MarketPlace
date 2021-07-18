@@ -1,14 +1,19 @@
 ﻿using System.Threading.Tasks;
+using MarketPlace.Query.Contract.Category;
 using MarketPlace.Query.Contract.Site.SiteSlider;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ServiceHost.Components
+namespace ServiceHost.ViewComponents
 {
     public class SiteHeaderViewComponent : ViewComponent
     {
+        private readonly ICategoryQuery _categoryQuery;
+
+        public SiteHeaderViewComponent(ICategoryQuery categoryQuery) => _categoryQuery = categoryQuery;
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View();
+            return View(await _categoryQuery.GetCategories());
         }
     }
 

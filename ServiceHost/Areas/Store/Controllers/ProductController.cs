@@ -40,7 +40,7 @@ namespace ServiceHost.Areas.Store.Controllers
             var result = await _storeApplication.IsStoreBelongToUser(id, User.GetUserId());
 
             ViewBag.StoreId = id;
-            ViewBag.Categories = await _categoryQuery.GetForAddProduct();
+            ViewBag.Categories = await _categoryQuery.GetCategories();
             if (result.IsSucceeded) return View();
 
             TempData[ErrorMessage] = result.Message;
@@ -72,7 +72,7 @@ namespace ServiceHost.Areas.Store.Controllers
             }
 
             ViewBag.StoreId = command.StoreId;
-            ViewBag.Categories = await _categoryQuery.GetForAddProduct();
+            ViewBag.Categories = await _categoryQuery.GetCategories();
             return View("Create", command);
         }
 
@@ -82,7 +82,7 @@ namespace ServiceHost.Areas.Store.Controllers
 
             var result = await _storeApplication.IsStoreBelongToUser(product.StoreId, User.GetUserId());
 
-            ViewBag.Categories = await _categoryQuery.GetForAddProduct();
+            ViewBag.Categories = await _categoryQuery.GetCategories();
 
             if (result.IsSucceeded) return View(product);
 
@@ -114,7 +114,7 @@ namespace ServiceHost.Areas.Store.Controllers
                 TempData[ErrorMessage] = result.Message;
             }
 
-            ViewBag.Categories = await _categoryQuery.GetForAddProduct();
+            ViewBag.Categories = await _categoryQuery.GetCategories();
             return View("Edit", command);
         }
     }

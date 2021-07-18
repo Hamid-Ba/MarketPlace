@@ -5,6 +5,6 @@ namespace MarketPlace.Query.Contract.Category
 {
     public interface ICategoryQuery
     {
-        Task<IEnumerable<CategoryQueryVM>> GetForAddProduct();
+        Task<IEnumerable<CategoryQueryVM>> GetCategories();
     }
 }
