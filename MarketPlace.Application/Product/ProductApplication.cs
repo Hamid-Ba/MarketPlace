@@ -82,5 +82,7 @@ namespace MarketPlace.Application.Product
 
             return result.Succeeded();
         }
+
+        public async Task<bool> IsProductBelongToUser(long id, long userId) => await _productRepository.IsProductBelongToUser(id, userId);
     }
 }

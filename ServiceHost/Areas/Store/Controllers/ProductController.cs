@@ -1,10 +1,14 @@
 ﻿using System.Threading.Tasks;
+using Framework.Application;
 using Microsoft.AspNetCore.Mvc;
 using Framework.Application.Authentication;
+using MarketPlace.ApplicationContract.AI.PictureAgg;
 using MarketPlace.ApplicationContract.AI.ProductAgg;
 using MarketPlace.ApplicationContract.AI.StoreAgg;
+using MarketPlace.ApplicationContract.ViewModels.PictureAgg;
 using MarketPlace.ApplicationContract.ViewModels.ProductAgg;
 using MarketPlace.Query.Contract.Category;
+using MarketPlace.Query.Contract.Picture;
 using MarketPlace.Query.Contract.Product;
 
 namespace ServiceHost.Areas.Store.Controllers
@@ -12,16 +16,20 @@ namespace ServiceHost.Areas.Store.Controllers
     public class ProductController : StoreBaseController
     {
         private readonly IProductQuery _productQuery;
+        private readonly IPictureQuery _pictureQuery;
         private readonly ICategoryQuery _categoryQuery;
         private readonly IStoreApplication _storeApplication;
         private readonly IProductApplication _productApplication;
+        private readonly IPictureApplication _pictureApplication;
 
-        public ProductController(IStoreApplication storeApplication, IProductQuery productQuery, ICategoryQuery categoryQuery, IProductApplication productApplication)
+        public ProductController(IStoreApplication storeApplication, IProductQuery productQuery, ICategoryQuery categoryQuery, IProductApplication productApplication, IPictureQuery pictureQuery, IPictureApplication pictureApplication)
         {
             _storeApplication = storeApplication;
             _productQuery = productQuery;
             _categoryQuery = categoryQuery;
             _productApplication = productApplication;
+            _pictureQuery = pictureQuery;
+            _pictureApplication = pictureApplication;
         }
 
         public async Task<IActionResult> Products(long id)
@@ -117,5 +125,95 @@ namespace ServiceHost.Areas.Store.Controllers
             ViewBag.Categories = await _categoryQuery.GetCategories();
             return View("Edit", command);
         }
+
+        [HttpGet("pictures/{productId}")]
+        public async Task<IActionResult> Pictures(long productId)
+        {
+            var result = await _productApplication.IsProductBelongToUser(productId, User.GetUserId());
+
+            ViewBag.ProductId = productId;
+            if (result) return View(await _pictureQuery.GetPicturesBy(productId));
+
+            TempData[ErrorMessage] = ApplicationMessage.DoNotAccessToOtherStore;
+            return RedirectToAction("Dashboard", "Home", new { area = "User" });
+        }
+
+        public async Task<IActionResult> AddPicture(long productId)
+        {
+            var result = await _productApplication.IsProductBelongToUser(productId, User.GetUserId());
+
+            ViewBag.ProductId = productId;
+            if (result) return View(new CreatePictureVM() { ProductId = productId });
+
+            TempData[ErrorMessage] = ApplicationMessage.DoNotAccessToOtherStore;
+            return RedirectToAction("Dashboard", "Home", new { area = "User" });
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddPicture(CreatePictureVM command)
+        {
+            var check = await _productApplication.IsProductBelongToUser(command.ProductId, User.GetUserId());
+
+            if (!check)
+            {
+                TempData[ErrorMessage] = ApplicationMessage.DoNotAccessToOtherStore;
+                return RedirectToAction("Dashboard", "Home", new { area = "User" });
+            }
+
+            if (ModelState.IsValid)
+            {
+                var result = await _pictureApplication.Create(command);
+
+                if (result.IsSucceeded)
+                {
+                    TempData[SuccessMessage] = result.Message;
+                    return RedirectToAction("Pictures", new { id = command.ProductId });
+                }
+
+                TempData[ErrorMessage] = result.Message;
+            }
+
+            ViewBag.ProductId = command.ProductId;
+            return View(command);
+        }
+
+        public async Task<IActionResult> EditPicture(long id, long productId)
+        {
+            var picture = await _pictureApplication.GetDetailForEditBy(id, productId);
+
+            if (picture != null) return View(picture);
+
+            TempData[ErrorMessage] = ApplicationMessage.DoNotAccessToOtherStore;
+            return RedirectToAction("Dashboard", "Home", new { area = "User" });
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditPicture(EditPictureVM command)
+        {
+            var check = await _productApplication.IsProductBelongToUser(command.ProductId, User.GetUserId());
+
+            if (!check)
+            {
+                TempData[ErrorMessage] = ApplicationMessage.DoNotAccessToOtherStore;
+                return RedirectToAction("Dashboard", "Home", new { area = "User" });
+            }
+
+            if (ModelState.IsValid)
+            {
+                var result = await _pictureApplication.Edit(command);
+
+                if (result.IsSucceeded)
+                {
+                    TempData[SuccessMessage] = result.Message;
+                    return RedirectToAction("Pictures", new { productId = command.ProductId });
+                }
+
+                TempData[ErrorMessage] = result.Message;
+            }
+
+            ViewBag.ProductId = command.ProductId;
+            return View(command);
+        }
+
     }
 }

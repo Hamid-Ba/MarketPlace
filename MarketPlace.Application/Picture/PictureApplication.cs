@@ -69,6 +69,5 @@ namespace MarketPlace.Application.Picture
         }
 
         public async Task<EditPictureVM> GetDetailForEditBy(long id, long productId) => await _pictureRepository.GetDetailForEditBy(id, productId);
-
     }
 }
