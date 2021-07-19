@@ -19,7 +19,7 @@ namespace ServiceHost.ViewComponents
 
     public class SiteFooterViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync()
+        public  IViewComponentResult Invoke()
         {
             return View();
         }
