@@ -88,9 +88,11 @@ namespace MarketPlace.Infrastructure.Configuration
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<ICategoryApplication, CategoryApplication>();
 
-
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
             services.AddTransient<IProductCategoryApplication, ProductCategoryApplication>();
+
+            services.AddTransient<IPictureRepository, PictureRepository>();
+            
             #endregion
 
             #region Queries

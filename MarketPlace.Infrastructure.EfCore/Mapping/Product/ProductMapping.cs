@@ -22,6 +22,7 @@ namespace MarketPlace.Infrastructure.EfCore.Mapping.Product
             builder.HasMany(c => c.Categories)
                 .WithOne(p => p.Product)
                 .HasForeignKey(f => f.ProductId);
+            
         }
     }
 }

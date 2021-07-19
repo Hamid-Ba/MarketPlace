@@ -19,6 +19,7 @@ namespace MarketPlace.Domain.Entities.StoreAgg.ProductAgg
 
         public Store Store { get; private set; }
         public List<Product_Category> Categories { get; private set; }
+        public List<Picture> Pictures { get; private set; }
 
         public Product(long storeId, string title, string imageName, double price, string shortDescription, string description,
             string productAcceptOrRejectDescription, bool isActive, ProductAcceptanceState productAcceptanceState)

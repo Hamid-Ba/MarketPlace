@@ -30,6 +30,8 @@ namespace MarketPlace.Infrastructure.EfCore.Context
             modelBuilder.Entity<Product>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Category>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Product_Category>().HasQueryFilter(q => !q.IsDelete);
+            modelBuilder.Entity<Picture>().HasQueryFilter(q => !q.IsDelete);
+            
         }
 
         #region Account
@@ -61,6 +63,7 @@ namespace MarketPlace.Infrastructure.EfCore.Context
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product_Category> ProductCategories { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
 
         #endregion
 
