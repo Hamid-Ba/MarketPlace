@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
 using System.Threading.Tasks;
 using Framework.Application;
 using MarketPlace.ApplicationContract.AI.ProductAgg;
@@ -84,5 +85,19 @@ namespace MarketPlace.Application.Product
         }
 
         public async Task<bool> IsProductBelongToUser(long id, long userId) => await _productRepository.IsProductBelongToUser(id, userId);
+
+        public long GetStoreIdBy(long productId) => _productRepository.GetStoreIdBy(productId);
+        
+        public async Task<OperationResult> IsProductConfirmed(long id)
+        {
+            OperationResult result = new();
+
+            var product = await _productRepository.GetEntityByIdAsync(id);
+            if (product is null) return result.Failed(ApplicationMessage.NotExist);
+
+            if (product.ProductAcceptanceState == ProductAcceptanceState.Accepted) return result.Succeeded();
+
+            return result.Failed("محصول شما تایید نشده است");
+        }
     }
 }

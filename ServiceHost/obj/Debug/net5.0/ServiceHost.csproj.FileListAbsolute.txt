@@ -214,3 +214,6 @@ C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\S
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Admin\Views\Product\DissConfirm.cshtml.g.cs
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Store\Views\Product\Edit.cshtml.g.cs
 C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Store\Views\Shared\_EditSubCategory.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Store\Views\Product\Pictures.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Store\Views\Product\AddPicture.cshtml.g.cs
+C:\Users\DANESH\Documents\Visual Studio 2019\Projects\Asp Core Pro\MarketPlace\ServiceHost\obj\Debug\net5.0\Razor\Areas\Store\Views\Product\EditPicture.cshtml.g.cs

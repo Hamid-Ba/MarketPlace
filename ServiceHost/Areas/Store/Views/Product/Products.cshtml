@@ -102,6 +102,12 @@
 
                                                 <td>
                                                     <a class="view fa fa-edit" asp-action="Edit" asp-route-id="@entity.Id"></a>
+
+                                                    @if (entity.ProductAcceptanceState == ProductAcceptanceState.Accepted)
+                                                    {
+                                                        <a class="view fa fa-picture-o" asp-action="Pictures" asp-route-productId="@entity.Id"></a>
+                                                    }
+
                                                 </td>
                                             </tr>
                                         }

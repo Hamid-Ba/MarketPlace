@@ -1,0 +1,66 @@
+﻿@model MarketPlace.ApplicationContract.ViewModels.PictureAgg.EditPictureVM
+@{
+    ViewData["Title"] = "ویرایش تصویر";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li>@ViewData["Title"]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    <!-- Nav tabs -->
+                    <partial name="_StoreAccountSideBarVM" model="@ViewBag.StoreId" />
+                </div>
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+                        <div class="tab-pane fade show active" id="account-details">
+                            <h3>@ViewData["Title"]</h3>
+                            <div class="login">
+                                <div class="login_form_container">
+                                    <div class="account_login_form">
+                                        <form asp-controller="Product" asp-action="EditPicture" method="post" enctype="multipart/form-data">
+
+
+                                            <label>تصویر</label> <span asp-validation-for="ImageFile" class="text-danger float-right"></span>
+                                            <input asp-for="ImageFile" type="file">
+                                            <br>
+
+                                            <label>اولویت</label> <span asp-validation-for="Priority" class="text-danger float-right"></span>
+                                            <input asp-for="Priority" type="number">
+                                            <br>
+
+                                            <div class="save_button primary_btn default_button">
+                                                <input type="hidden" asp-for="ProductId" value="@ViewBag.ProductId" />
+                                                <input type="hidden" asp-for="Id" value="@Model.Id" />
+                                                <button type="submit">ایجاد</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

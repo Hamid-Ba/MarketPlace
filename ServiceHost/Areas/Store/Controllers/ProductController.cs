@@ -129,9 +129,18 @@ namespace ServiceHost.Areas.Store.Controllers
         [HttpGet("pictures/{productId}")]
         public async Task<IActionResult> Pictures(long productId)
         {
+            var isProductConfirmed = await _productApplication.IsProductConfirmed(productId);
+
+            if (!isProductConfirmed.IsSucceeded)
+            {
+                TempData[WarningMessage] = isProductConfirmed.Message;
+                return RedirectToAction("Dashboard", "Home", new { area = "User" });
+            }
+
             var result = await _productApplication.IsProductBelongToUser(productId, User.GetUserId());
 
             ViewBag.ProductId = productId;
+            ViewBag.StoreId = _productApplication.GetStoreIdBy(productId);
             if (result) return View(await _pictureQuery.GetPicturesBy(productId));
 
             TempData[ErrorMessage] = ApplicationMessage.DoNotAccessToOtherStore;
@@ -140,9 +149,18 @@ namespace ServiceHost.Areas.Store.Controllers
 
         public async Task<IActionResult> AddPicture(long productId)
         {
+            var isProductConfirmed = await _productApplication.IsProductConfirmed(productId);
+
+            if (!isProductConfirmed.IsSucceeded)
+            {
+                TempData[WarningMessage] = isProductConfirmed.Message;
+                return RedirectToAction("Dashboard", "Home", new { area = "User" });
+            }
+
             var result = await _productApplication.IsProductBelongToUser(productId, User.GetUserId());
 
             ViewBag.ProductId = productId;
+            ViewBag.StoreId = _productApplication.GetStoreIdBy(productId);
             if (result) return View(new CreatePictureVM() { ProductId = productId });
 
             TempData[ErrorMessage] = ApplicationMessage.DoNotAccessToOtherStore;
@@ -157,30 +175,42 @@ namespace ServiceHost.Areas.Store.Controllers
             if (!check)
             {
                 TempData[ErrorMessage] = ApplicationMessage.DoNotAccessToOtherStore;
-                return RedirectToAction("Dashboard", "Home", new { area = "User" });
+                return RedirectToAction("Dashboard", "Home", new {area = "User"});
             }
 
             if (ModelState.IsValid)
             {
+                command.UserId = User.GetUserId();
                 var result = await _pictureApplication.Create(command);
 
                 if (result.IsSucceeded)
                 {
                     TempData[SuccessMessage] = result.Message;
-                    return RedirectToAction("Pictures", new { id = command.ProductId });
+                    return RedirectToAction("Pictures", new { productId = command.ProductId });
                 }
 
                 TempData[ErrorMessage] = result.Message;
             }
 
+            ViewBag.StoreId = _productApplication.GetStoreIdBy(command.ProductId);
             ViewBag.ProductId = command.ProductId;
             return View(command);
         }
 
+        [HttpGet]
         public async Task<IActionResult> EditPicture(long id, long productId)
         {
-            var picture = await _pictureApplication.GetDetailForEditBy(id, productId);
+            var isProductConfirmed = await _productApplication.IsProductConfirmed(productId);
 
+            if (!isProductConfirmed.IsSucceeded)
+            {
+                TempData[WarningMessage] = isProductConfirmed.Message;
+                return RedirectToAction("Dashboard", "Home", new { area = "User" });
+            }
+
+            var picture = await _pictureApplication.GetDetailForEditBy(id, productId);
+            ViewBag.StoreId = _productApplication.GetStoreIdBy(productId);
+            ViewBag.ProductId = productId;
             if (picture != null) return View(picture);
 
             TempData[ErrorMessage] = ApplicationMessage.DoNotAccessToOtherStore;
@@ -190,16 +220,9 @@ namespace ServiceHost.Areas.Store.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> EditPicture(EditPictureVM command)
         {
-            var check = await _productApplication.IsProductBelongToUser(command.ProductId, User.GetUserId());
-
-            if (!check)
-            {
-                TempData[ErrorMessage] = ApplicationMessage.DoNotAccessToOtherStore;
-                return RedirectToAction("Dashboard", "Home", new { area = "User" });
-            }
-
             if (ModelState.IsValid)
             {
+                command.UserId = User.GetUserId();
                 var result = await _pictureApplication.Edit(command);
 
                 if (result.IsSucceeded)
@@ -211,6 +234,7 @@ namespace ServiceHost.Areas.Store.Controllers
                 TempData[ErrorMessage] = result.Message;
             }
 
+            ViewBag.StoreId = _productApplication.GetStoreIdBy(command.ProductId);
             ViewBag.ProductId = command.ProductId;
             return View(command);
         }

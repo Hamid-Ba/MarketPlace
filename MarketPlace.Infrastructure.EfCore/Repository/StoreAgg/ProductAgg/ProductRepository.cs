@@ -49,5 +49,7 @@ namespace MarketPlace.Infrastructure.EfCore.Repository.StoreAgg.ProductAgg
         public async Task<bool> IsProductBelongToUser(long id, long userId) => await _context.Products
             .Include(s => s.Store).AnyAsync(p => p.Id == id && p.Store.UserId == userId);
 
+        public long GetStoreIdBy(long productId) => _context.Products.Find(productId).StoreId;
+
     }
 }

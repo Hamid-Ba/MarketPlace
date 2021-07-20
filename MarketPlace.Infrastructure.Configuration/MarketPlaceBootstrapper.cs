@@ -1,5 +1,6 @@
 ﻿using MarketPlace.Application.Account;
 using MarketPlace.Application.Category;
+using MarketPlace.Application.Picture;
 using MarketPlace.Application.Product;
 using MarketPlace.Application.ProductCategory;
 using MarketPlace.Application.Site;
@@ -7,6 +8,7 @@ using MarketPlace.Application.Store;
 using MarketPlace.Application.Tickets;
 using MarketPlace.ApplicationContract.AI.Account;
 using MarketPlace.ApplicationContract.AI.CategoryAgg;
+using MarketPlace.ApplicationContract.AI.PictureAgg;
 using MarketPlace.ApplicationContract.AI.ProductAgg;
 using MarketPlace.ApplicationContract.AI.ProductCategoryAgg;
 using MarketPlace.ApplicationContract.AI.Site;
@@ -24,12 +26,14 @@ using MarketPlace.Infrastructure.EfCore.Repository.StoreAgg;
 using MarketPlace.Infrastructure.EfCore.Repository.StoreAgg.ProductAgg;
 using MarketPlace.Infrastructure.EfCore.Repository.Tickets;
 using MarketPlace.Query.Contract.Category;
+using MarketPlace.Query.Contract.Picture;
 using MarketPlace.Query.Contract.Product;
 using MarketPlace.Query.Contract.Site.SiteBanner;
 using MarketPlace.Query.Contract.Site.SiteSlider;
 using MarketPlace.Query.Contract.Store;
 using MarketPlace.Query.Contract.Tickets;
 using MarketPlace.Query.Query.Category;
+using MarketPlace.Query.Query.Picture;
 using MarketPlace.Query.Query.Product;
 using MarketPlace.Query.Query.Site.SiteBanner;
 using MarketPlace.Query.Query.Site.SiteSlider;
@@ -92,7 +96,8 @@ namespace MarketPlace.Infrastructure.Configuration
             services.AddTransient<IProductCategoryApplication, ProductCategoryApplication>();
 
             services.AddTransient<IPictureRepository, PictureRepository>();
-            
+            services.AddTransient<IPictureApplication, PictureApplication>();
+
             #endregion
 
             #region Queries
@@ -108,6 +113,8 @@ namespace MarketPlace.Infrastructure.Configuration
             services.AddTransient<IProductQuery, ProductQuery>();
 
             services.AddTransient<ICategoryQuery, CategoryQuery>();
+            
+            services.AddTransient<IPictureQuery, PictureQuery>();
             #endregion
         }
     }

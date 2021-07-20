@@ -14,5 +14,6 @@ namespace MarketPlace.ApplicationContract.AI.StoreAgg
        Task<OperationResult> ConfirmStoreRequestBy(long id);
        Task<OperationResult> DissConfirmStoreRequestBy(DissConfrimStoreRequestVM command);
        Task<OperationResult> IsStoreBelongToUser(long id, long userId);
+       Task<OperationResult> IsStoreConfirmed(long id);
    }
 }

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<MarketPlace.Query.Contract.Picture.PictureQueryVM>
+@{
+    ViewData["Title"] = "تصاویر";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li>@ViewData["Title"]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+<!-- my account start  -->
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    <!-- Nav tabs -->
+                    <partial name="_StoreAccountSideBarVM" model="@ViewBag.StoreId" />
+                </div>
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+                        <div class="tab-pane fade show active" id="dashboard">
+                            <a class="btn btn-info float-right" asp-action="AddPicture" asp-route-productId="@ViewBag.ProductId">ایجاد تصویر جدید</a>
+                        </div>
+                        <div class="tab-pane fade show active" id="orders">
+                            <h3>@ViewData["Title"]</h3>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>تصویر</th>
+                                            <th>اولویت</th>
+                                            <th>عملیات</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var entity in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <img src="/img/@entity.ImageName" style="border-radius: 50px; width: 50%" alt="Alternate Text" />
+                                                </td>
+
+                                                <td>@entity.Priority</td>
+                                                
+                                                <td>
+                                                    <a class="view fa fa-edit" asp-action="EditPicture" asp-route-id="@entity.Id" asp-route-productId="@ViewBag.ProductId"></a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- my account end   -->

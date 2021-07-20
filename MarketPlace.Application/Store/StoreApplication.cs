@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Formats.Asn1;
 using System.Threading.Tasks;
 using Framework.Application;
 using MarketPlace.ApplicationContract.AI.StoreAgg;
@@ -96,6 +97,18 @@ namespace MarketPlace.Application.Store
                 return result.Failed("شما به فروشگاه دیگران دسترسی ندارید");
 
             return result.Succeeded("با موفقیت وارد شدید");
+        }
+
+        public async Task<OperationResult> IsStoreConfirmed(long id)
+        {
+            OperationResult result = new();
+
+            var store = await _storeRepository.GetEntityByIdAsync(id);
+            if (store is null) return result.Failed(ApplicationMessage.NotExist);
+
+            if (store.Status == StoreStatus.Confirmed) return result.Succeeded();
+
+            return result.Failed("فروشگاه تایید نشده است");
         }
     }
 }

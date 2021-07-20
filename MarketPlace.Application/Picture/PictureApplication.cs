@@ -50,8 +50,8 @@ namespace MarketPlace.Application.Picture
             if (!await _productRepository.IsProductBelongToUser(command.ProductId, command.UserId))
                 return result.Failed(ApplicationMessage.DoNotAccessToOtherStore);
 
-            if (command.ImageFile is null) return result.Failed(ApplicationMessage.UploadImage);
-            if (!command.ImageFile.IsImage()) return result.Failed(ApplicationMessage.WrongFormat);
+            if (command.ImageFile != null)
+                if (!command.ImageFile.IsImage()) return result.Failed(ApplicationMessage.WrongFormat);
 
             var picture = await _pictureRepository.GetEntityByIdAsync(command.Id);
             if (picture is null) return result.Failed(ApplicationMessage.NotExist);

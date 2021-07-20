@@ -11,8 +11,9 @@ namespace MarketPlace.ApplicationContract.AI.ProductAgg
         Task<OperationResult> Edit(EditProductVM command);
         Task<EditProductVM> GetDetailForEditBy(long id);
         Task<IEnumerable<AdminProductVM>> GetAllForAdmin();
-        Task<OperationResult> ConfirmOrDissConfirm(long id, bool isConfirm ,string reason);
+        Task<OperationResult> ConfirmOrDissConfirm(long id, bool isConfirm, string reason);
         Task<bool> IsProductBelongToUser(long id, long userId);
-
+        long GetStoreIdBy(long productId);
+        Task<OperationResult> IsProductConfirmed(long id);
     }
 }
