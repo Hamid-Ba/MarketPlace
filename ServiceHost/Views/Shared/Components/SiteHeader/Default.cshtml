@@ -374,21 +374,21 @@
                                     @foreach (var cat in Model.Where(c => c.ParentId is null))
                                     {
                                         <li class="menu_item_children">
-                                            <a href="#"> @cat.Name <i class="fa fa-angle-left"></i></a>
+                                            <a asp-area="" asp-controller="Products" asp-action="Index" asp-route-category="@cat.UrlName"> @cat.Name <i class="fa fa-angle-left"></i></a>
                                             @if (cat.Categories != null)
                                             {
                                                 <ul class="categories_mega_menu">
                                                     @foreach (var subCat in cat.Categories)
                                                     {
                                                         <li class="menu_item_children">
-                                                            <a href="#"> @subCat.Name </a>
+                                                            <a asp-area="" asp-controller="Products" asp-action="Index" asp-route-category="@subCat.UrlName"> @subCat.Name </a>
                                                             
                                                             @if (subCat.Categories != null)
                                                             {
                                                                 <ul class="categorie_sub_menu">
                                                                     @foreach(var secondSub in subCat.Categories) 
                                                                     {
-                                                                        <li><a href=""> @secondSub.Name </a></li>
+                                                                        <li><a asp-area="" asp-controller="Products" asp-action="Index" asp-route-category="@secondSub.UrlName"> @secondSub.Name </a></li>
                                                                     }
                                                                     
                                                                 </ul>

@@ -20,6 +20,7 @@ namespace MarketPlace.Query.Query.Category
                    {
                        Id = c.Id,
                        Name = c.Name,
+                       UrlName = c.UrlName,
                        Categories = MapCategories(c.SubCategories)
                    }).ToListAsync();
 
@@ -34,6 +35,7 @@ namespace MarketPlace.Query.Query.Category
                     Id = c.Id,
                     ParentId = c.ParentId,
                     Name = c.Name,
+                    UrlName = c.UrlName,
                     Categories = MapCategories(c.SubCategories)
                 }).ToList();
 

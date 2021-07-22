@@ -5876,7 +5876,7 @@ textarea:-ms-input-placeholder {
 	background: #0063d1;
 	color: #ffffff;
 }
-.pagination ul li.current {
+.pagination ul li.active {
 	background: #0063d1;
 	color: #ffffff;
 }

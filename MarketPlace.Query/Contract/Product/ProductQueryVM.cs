@@ -1,4 +1,5 @@
-﻿using Framework.Application;
+﻿using System.ComponentModel.DataAnnotations;
+using Framework.Application;
 
 namespace MarketPlace.Query.Contract.Product
 {
@@ -15,5 +16,23 @@ namespace MarketPlace.Query.Contract.Product
         public bool IsActive { get;  set; }
         public ProductAcceptanceState ProductAcceptanceState { get;  set; }
         public string CreationDate { get; set; }
+    }
+
+    public class ProductMoneyRangeFilter
+    {
+        public int SelectedMaxValue { get; set; }
+        public int SelectedMinValue { get; set; }
+    }
+
+    public enum ProductOrderFilter
+    {
+        [Display(Name = "نام محصول")]
+        Title,
+
+        [Display(Name = "قیمت نزولی")]
+        Price_Dec,
+
+        [Display(Name = "قیمت صعودی")]
+        Price_Ace
     }
 }
