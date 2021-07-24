@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Framework.Application;
+using MarketPlace.Domain.Entities.StoreAgg.ProductAgg;
 using MarketPlace.Infrastructure.EfCore.Context;
 using MarketPlace.Query.Contract.Product;
 using Microsoft.EntityFrameworkCore;
@@ -73,6 +75,43 @@ namespace MarketPlace.Query.Query.Product
                 Price = p.Price,
                 ShortDescription = p.ShortDescription
             }).ToListAsync();
+        }
+
+        public async Task<ProductQueryVM> GetProductDetailBy(long id) => await _context.Products
+            .Include(c => c.Categories).ThenInclude(c => c.Category)
+            .Include(p => p.Pictures).Where(p => p.Id == id).Select(p => new ProductQueryVM()
+            {
+                Id = p.Id,
+                StoreId = p.StoreId,
+                Title = p.Title,
+                Price = p.Price,
+                ImageName = p.ImageName,
+                ShortDescription = p.ShortDescription,
+                Description = p.Description,
+                Categories = MapCategories(p.Categories),
+                Pictures = MapPictures(p.Pictures)
+            }).FirstOrDefaultAsync();
+
+        private static List<ProductPictureQueryVM> MapPictures(List<Domain.Entities.StoreAgg.ProductAgg.Picture> pictures)
+        {
+            if (pictures is null) throw new ArgumentNullException(nameof(pictures));
+            return pictures.Select(p => new ProductPictureQueryVM()
+            {
+                Id = p.Id,
+                ImageName = p.ImageName,
+                Priority = p.Priority
+            }).OrderByDescending(p => p.Priority).ToList();
+        }
+
+        private static List<ProductCategoryQueryVM> MapCategories(List<Product_Category> categories)
+        {
+            if (categories == null) throw new ArgumentNullException(nameof(categories));
+            return categories.Select(c => new ProductCategoryQueryVM()
+            {
+                Id = c.CategoryId,
+                Title = c.Category.Name,
+                Url = c.Category.UrlName
+            }).ToList();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Framework.Application;
 
 namespace MarketPlace.Query.Contract.Product
@@ -16,6 +17,23 @@ namespace MarketPlace.Query.Contract.Product
         public bool IsActive { get;  set; }
         public ProductAcceptanceState ProductAcceptanceState { get;  set; }
         public string CreationDate { get; set; }
+
+        public List<ProductCategoryQueryVM> Categories { get; set; }
+        public List<ProductPictureQueryVM> Pictures { get; set; }
+    }
+
+    public class ProductPictureQueryVM
+    {
+        public long Id { get; set; }
+        public string ImageName { get; set; }
+        public int Priority { get; set; }
+    }
+
+    public class ProductCategoryQueryVM
+    {
+        public long Id { get; set; }
+        public string Title { get; set; }
+        public string Url { get; set; }
     }
 
     public class ProductMoneyRangeFilter
