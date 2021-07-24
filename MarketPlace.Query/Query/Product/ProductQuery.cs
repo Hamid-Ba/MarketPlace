@@ -79,7 +79,8 @@ namespace MarketPlace.Query.Query.Product
 
         public async Task<ProductQueryVM> GetProductDetailBy(long id) => await _context.Products
             .Include(c => c.Categories).ThenInclude(c => c.Category)
-            .Include(p => p.Pictures).Where(p => p.Id == id).Select(p => new ProductQueryVM()
+            .Include(p => p.Pictures).Where(p => p.Id == id && p.IsActive && p.ProductAcceptanceState == ProductAcceptanceState.Accepted)
+            .Select(p => new ProductQueryVM()
             {
                 Id = p.Id,
                 StoreId = p.StoreId,

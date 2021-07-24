@@ -58,5 +58,8 @@ namespace ServiceHost.Controllers
 
             return View(model);
         }
+
+        [HttpGet("product_detail/{id}/{title}")]
+        public async Task<IActionResult> Detail(long id, string title) => View(await _productQuery.GetProductDetailBy(id));
     }
 }
