@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dUSZtDE4XPavOZ/Q61IuRrfRe68TOby4IepFVv1z6fMtud8S2QlLW1UzW0GcwBi3Sd2rVmLLE+CSFSDOCzdzWg==",
+  "dgSpecHash": "psWSFqb5iGos7uIj9YfyywJqMlDWkAxJeb15cSILMQKs9jjYmM3GBtRs3RUNiYVH0jtnt1Y8AJNgJQ6NxAjg1g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\MarketPlace.Infrastructure.EfCore\\MarketPlace.Infrastructure.EfCore.csproj",
+  "projectFilePath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\MarketPlace\\MarketPlace.Infrastructure.EfCore\\MarketPlace.Infrastructure.EfCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DANESH\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\DANESH\\.nuget\\packages\\kavenegar\\1.2.4\\kavenegar.1.2.4.nupkg.sha512",

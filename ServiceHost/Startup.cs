@@ -32,6 +32,7 @@ namespace ServiceHost
         {
             MarketPlaceBootstrapper.Configure(services, Configuration.GetConnectionString("MarketPlaceConnection"));
 
+            services.AddProgressiveWebApp();
             services.AddHttpContextAccessor();
             services.AddControllersWithViews();
             services.AddScoped<IAuthHelper, AuthHelper>();

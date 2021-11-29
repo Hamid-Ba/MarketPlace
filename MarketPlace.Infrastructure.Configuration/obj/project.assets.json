@@ -6192,11 +6192,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\MarketPlace.Infrastructure.Configuration\\MarketPlace.Infrastructure.Configuration.csproj",
+      "projectUniqueName": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\MarketPlace\\MarketPlace.Infrastructure.Configuration\\MarketPlace.Infrastructure.Configuration.csproj",
       "projectName": "MarketPlace.Infrastructure.Configuration",
-      "projectPath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\MarketPlace.Infrastructure.Configuration\\MarketPlace.Infrastructure.Configuration.csproj",
+      "projectPath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\MarketPlace\\MarketPlace.Infrastructure.Configuration\\MarketPlace.Infrastructure.Configuration.csproj",
       "packagesPath": "C:\\Users\\DANESH\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\MarketPlace.Infrastructure.Configuration\\obj\\",
+      "outputPath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\MarketPlace\\MarketPlace.Infrastructure.Configuration\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DANESH\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6212,17 +6212,17 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\MarketPlace.ApplicationContract\\MarketPlace.ApplicationContract.csproj": {
-              "projectPath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\MarketPlace.ApplicationContract\\MarketPlace.ApplicationContract.csproj"
+            "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\MarketPlace\\MarketPlace.ApplicationContract\\MarketPlace.ApplicationContract.csproj": {
+              "projectPath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\MarketPlace\\MarketPlace.ApplicationContract\\MarketPlace.ApplicationContract.csproj"
             },
-            "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\MarketPlace.Application\\MarketPlace.Application.csproj": {
-              "projectPath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\MarketPlace.Application\\MarketPlace.Application.csproj"
+            "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\MarketPlace\\MarketPlace.Application\\MarketPlace.Application.csproj": {
+              "projectPath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\MarketPlace\\MarketPlace.Application\\MarketPlace.Application.csproj"
             },
-            "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\MarketPlace.Infrastructure.EfCore\\MarketPlace.Infrastructure.EfCore.csproj": {
-              "projectPath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\MarketPlace.Infrastructure.EfCore\\MarketPlace.Infrastructure.EfCore.csproj"
+            "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\MarketPlace\\MarketPlace.Infrastructure.EfCore\\MarketPlace.Infrastructure.EfCore.csproj": {
+              "projectPath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\MarketPlace\\MarketPlace.Infrastructure.EfCore\\MarketPlace.Infrastructure.EfCore.csproj"
             },
-            "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\MarketPlace.Query\\MarketPlace.Query.csproj": {
-              "projectPath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\MarketPlace.Query\\MarketPlace.Query.csproj"
+            "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\MarketPlace\\MarketPlace.Query\\MarketPlace.Query.csproj": {
+              "projectPath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\MarketPlace\\MarketPlace.Query\\MarketPlace.Query.csproj"
             }
           }
         }
@@ -6257,7 +6257,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

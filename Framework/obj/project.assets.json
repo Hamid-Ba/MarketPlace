@@ -1777,11 +1777,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\Framework\\Framework.csproj",
+      "projectUniqueName": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\MarketPlace\\Framework\\Framework.csproj",
       "projectName": "Framework",
-      "projectPath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\Framework\\Framework.csproj",
+      "projectPath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\MarketPlace\\Framework\\Framework.csproj",
       "packagesPath": "C:\\Users\\DANESH\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\Framework\\obj\\",
+      "outputPath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\MarketPlace\\Framework\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DANESH\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1845,7 +1845,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

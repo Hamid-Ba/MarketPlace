@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "8efec7e0-2ca4-47fa-85f0-53f91a8d2d21": {
+      "ProjectGuid": "8efec7e0-2ca4-47fa-85f0-53f91a8d2d21",
+      "DisplayName": "ServiceHost",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

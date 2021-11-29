@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ll3SNsnC99vOg4xj2fKzqH7PQg+dOABx1AFn1/mSzorxq5sfUUmhRCZd2CrxS/B9M9ikUmWyN0nMRDTyLQ+iPQ==",
+  "dgSpecHash": "AK34BSVqr+gX4K2GnqCvLj4ZtC2qjnuWWBznn77R9D8SqXYr301+q2PR/V5b4jKEaMkM+i74AKR8yyHqOEt6yQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\Asp Core Pro\\MarketPlace\\Framework\\Framework.csproj",
+  "projectFilePath": "C:\\Users\\DANESH\\Documents\\Visual Studio 2019\\Projects\\MarketPlace\\Framework\\Framework.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DANESH\\.nuget\\packages\\kavenegar\\1.2.4\\kavenegar.1.2.4.nupkg.sha512",
     "C:\\Users\\DANESH\\.nuget\\packages\\lazziya.imageresize\\2.0.0\\lazziya.imageresize.2.0.0.nupkg.sha512",
